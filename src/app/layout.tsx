@@ -20,7 +20,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased bg-stars">
+      <body className="antialiased">
         {children}
         <Toaster />
       </body>
