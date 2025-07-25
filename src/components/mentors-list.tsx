@@ -13,21 +13,18 @@ type Mentor = MatchMentorOutput['mentor'];
 function MentorListItem({ mentor }: { mentor: Mentor }) {
     return (
         <Card className="bg-card/80 backdrop-blur-sm border-white/20 shadow-xl transform transition-all duration-300 hover:scale-105">
-            <CardHeader className="flex flex-row items-center gap-4">
-                <Avatar className="h-16 w-16">
+            <CardHeader className="flex flex-row items-center gap-4 p-4">
+                <Avatar className="h-12 w-12">
                     <AvatarImage src={`https://placehold.co/128x128.png`} alt={mentor.name} data-ai-hint="profile picture" />
                     <AvatarFallback>
-                        <User className="h-8 w-8 text-muted-foreground" />
+                        <User className="h-6 w-6 text-muted-foreground" />
                     </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
-                    <CardTitle className="font-headline text-2xl">{mentor.name}</CardTitle>
-                    <CardDescription className="text-base">{mentor.expertise}</CardDescription>
+                    <CardTitle className="font-headline text-xl">{mentor.name}</CardTitle>
+                    <CardDescription className="text-sm">{mentor.expertise}</CardDescription>
                 </div>
             </CardHeader>
-            <CardContent>
-                <p className="text-muted-foreground">{mentor.bio}</p>
-            </CardContent>
         </Card>
     )
 }
@@ -56,24 +53,26 @@ export function MentorsList() {
     }, []);
 
     return (
-        <section>
-            <h2 className="font-headline text-4xl text-center mb-8 text-glow">Meet Our Mentors</h2>
-            {isLoading && (
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <Skeleton className="h-48 rounded-xl" />
-                    <Skeleton className="h-48 rounded-xl" />
-                    <Skeleton className="h-48 rounded-xl" />
-                    <Skeleton className="h-48 rounded-xl" />
-                </div>
-            )}
-            {error && <p className="text-destructive text-center">{error}</p>}
-            {!isLoading && !error && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {mentors.map(mentor => (
-                        <MentorListItem key={mentor.mentorId} mentor={mentor} />
-                    ))}
-                </div>
-            )}
+        <section className="h-full">
+            <div className="sticky top-8">
+                <h2 className="font-headline text-3xl text-center mb-4 text-glow">Meet Our Mentors</h2>
+                {isLoading && (
+                    <div className="space-y-4">
+                        <Skeleton className="h-20 rounded-xl" />
+                        <Skeleton className="h-20 rounded-xl" />
+                        <Skeleton className="h-20 rounded-xl" />
+                        <Skeleton className="h-20 rounded-xl" />
+                    </div>
+                )}
+                {error && <p className="text-destructive text-center">{error}</p>}
+                {!isLoading && !error && (
+                    <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2">
+                        {mentors.map(mentor => (
+                            <MentorListItem key={mentor.mentorId} mentor={mentor} />
+                        ))}
+                    </div>
+                )}
+            </div>
         </section>
     );
 }
