@@ -52,7 +52,7 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
 
 
   return (
-    <Card className="w-full transform transition-all duration-300 ease-in-out hover:shadow-xl bg-card/80 backdrop-blur-sm border-white/20">
+    <Card className="w-full transform transition-all duration-300 ease-in-out hover:shadow-2xl shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar className="h-16 w-16">
           <AvatarImage src={`https://placehold.co/128x128.png`} alt={mentor.name} data-ai-hint="profile picture" />

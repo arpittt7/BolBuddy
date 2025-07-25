@@ -12,7 +12,7 @@ type Mentor = MatchMentorOutput['mentor'];
 
 function MentorListItem({ mentor }: { mentor: Mentor }) {
     return (
-        <Card className="bg-card/80 backdrop-blur-sm border-white/20 shadow-xl transform transition-all duration-300 hover:scale-105">
+        <Card className="shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <CardHeader className="flex flex-row items-center gap-4 p-4">
                 <Avatar className="h-12 w-12">
                     <AvatarImage src={`https://placehold.co/128x128.png`} alt={mentor.name} data-ai-hint="profile picture" />

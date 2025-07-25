@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 220 13% 91%;
     --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
+    --card: 220 13% 97%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
@@ -40,9 +40,9 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 240 5% 15%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 240 5% 18%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
@@ -56,7 +56,7 @@
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
+    --border: 240 3.7% 25.9%;
     --input: 240 3.7% 15.9%;
     --ring: 217.2 91.2% 59.8%;
     --chart-1: 220 70% 50%;
@@ -86,9 +86,6 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-image:
-    radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0);
-  background-size: 2rem 2rem;
 }
 
 @supports (font-variation-settings: normal) {

@@ -156,9 +156,9 @@ export function BolBuddy() {
   };
 
   return (
-    <div className="w-full max-w-2xl space-y-8">
+    <div className="w-full max-w-xl space-y-8">
       <audio ref={audioRef} />
-      <Card className="bg-card/80 backdrop-blur-sm border-white/20 shadow-xl">
+      <Card className="shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-3xl">Hello! I'm BolBot.</CardTitle>
           <CardDescription>
@@ -178,7 +178,7 @@ export function BolBuddy() {
                       <div className="relative">
                         <Textarea
                           placeholder="e.g., 'Mujhe coding seekhna hai.' or 'I want to start my own business...'"
-                          className="min-h-[120px] resize-none pr-12 text-base bg-background/80"
+                          className="min-h-[120px] resize-none pr-12 text-base"
                           {...field}
                         />
                         <Button
@@ -221,7 +221,7 @@ export function BolBuddy() {
       </Card>
 
       {isLoading && !isAnnouncing && (
-         <Card className="bg-card/80 backdrop-blur-sm border-white/20">
+         <Card className="shadow-xl">
             <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[200px]">
                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
                 <p className="text-muted-foreground">Finding the perfect mentor for you...</p>
