@@ -26,7 +26,7 @@ export function SiteHeader() {
           </div>
           <div className="flex items-center gap-4">
              <div className="hidden md:flex items-center gap-4">
-                <Button variant="ghost" className="text-foreground/80 hover:text-foreground">
+                <Button>
                     Sign In
                 </Button>
              </div>
