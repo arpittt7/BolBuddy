@@ -29,6 +29,7 @@ const MentorSchema = z.object({
 const MatchMentorOutputSchema = z.object({
   mentor: MentorSchema.describe('The recommended mentor for the user.'),
   reason: z.string().describe('The reasoning behind the mentor recommendation.'),
+  announcement: z.string().describe('The full text of the announcement to be spoken to the user.')
 });
 export type MatchMentorOutput = z.infer<typeof MatchMentorOutputSchema>;
 
@@ -44,7 +45,7 @@ const prompt = ai.definePrompt({
     language: z.string().optional(),
   })},
   output: {schema: MatchMentorOutputSchema},
-  prompt: `You are an AI mentor matching service called BolBot. Given the user's goals, recommend a mentor from the following list. Explain the reasoning behind your choice, citing the mentor's expertise and bio.
+  prompt: `You are an AI mentor matching service called BolBot. Given the user's goals, recommend a mentor from the following list.
 
 You MUST respond in the same language as the user's goals. The language is specified in the 'language' field.
 
@@ -59,7 +60,10 @@ Bio: {{this.bio}}
 ID: {{this.mentorId}}
 {{/each}}
 
-Based on the user goals, return a JSON object with the 'mentor' field containing the mentor's information and a 'reason' field explaining why this mentor is a good match for the user. The mentor object must contain the mentorId, name, expertise, and bio fields.
+Based on the user goals, return a JSON object with the following fields:
+- 'mentor': the mentor's information (including mentorId, name, expertise, and bio).
+- 'reason': a short explanation of why this mentor is a good match for the user.
+- 'announcement': a friendly announcement to the user, in their language, that a match has been found, including the reason. For example: "I found a match for you. Based on your goals, I recommend [Mentor Name] because [Reason]."
 `,
 });
 

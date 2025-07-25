@@ -130,8 +130,7 @@ export function BolBuddy() {
       const response = await matchMentor({ userGoals: data.userGoals, language: currentLang });
       
       setIsAnnouncing(true);
-      const announcementText = `I found a match for you. ${response.reason}`;
-      const audioResult = await announcementTts({text: announcementText, language: currentLang});
+      const audioResult = await announcementTts({text: response.announcement, language: currentLang});
       
       const audio = new Audio(audioResult.audioDataUri);
       audioRef.current = audio;
