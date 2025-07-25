@@ -2,7 +2,7 @@
 import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Users, MessageSquareQuote, Download } from 'lucide-react';
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
             <BolBuddy />
         </div>
         <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-             <Card className="w-full shadow-xl">
+             <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
                         <Users className="h-8 w-8" />
@@ -33,14 +33,16 @@ export default function Home() {
                         Peer voice groups for learning and motivation
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="text-center">
-                     <p className="text-muted-foreground mb-6">
+                <CardContent className="text-center flex-grow">
+                     <p className="text-muted-foreground">
                         Connect with fellow learners in voice-based groups. Share your progress, ask questions, and stay motivated together on your journey.
                     </p>
-                    <Button>Join a Group</Button>
                 </CardContent>
+                 <CardFooter className="justify-center">
+                    <Button>Join a Group</Button>
+                </CardFooter>
             </Card>
-            <Card className="w-full shadow-xl">
+            <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
                         <MessageSquareQuote className="h-8 w-8" />
@@ -50,14 +52,16 @@ export default function Home() {
                         Ask anonymous questions via voice
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="text-center">
-                     <p className="text-muted-foreground mb-6">
+                <CardContent className="text-center flex-grow">
+                     <p className="text-muted-foreground">
                         Have a question you're hesitant to ask? Use your voice to ask it anonymously and get the answers you need without revealing your identity.
                     </p>
-                    <Button>Ask Anonymously</Button>
                 </CardContent>
+                <CardFooter className="justify-center">
+                    <Button>Ask Anonymously</Button>
+                </CardFooter>
             </Card>
-            <Card className="w-full shadow-xl">
+            <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
                         <Download className="h-8 w-8" />
@@ -67,12 +71,14 @@ export default function Home() {
                         Works offline via downloaded audio
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="text-center">
-                     <p className="text-muted-foreground mb-6">
+                <CardContent className="text-center flex-grow">
+                     <p className="text-muted-foreground">
                         Access your learning materials anytime, anywhere, even without an internet connection. Download audio content and continue your progress offline.
                     </p>
-                    <Button>Learn More</Button>
                 </CardContent>
+                <CardFooter className="justify-center">
+                    <Button>Learn More</Button>
+                </CardFooter>
             </Card>
         </div>
       </main>
