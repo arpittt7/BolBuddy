@@ -5,7 +5,9 @@ import Link from 'next/link';
 
 export function SiteHeader() {
   const navLinks = [
-    'Features', 'About', 'Contact'
+    { name: 'Features', href: '#' },
+    { name: 'About', href: '#' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
@@ -19,9 +21,9 @@ export function SiteHeader() {
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
-                <a key={link} href="#" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-                  {link}
-                </a>
+                <Link key={link.name} href={link.href} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                  {link.name}
+                </Link>
               ))}
             </nav>
           </div>
