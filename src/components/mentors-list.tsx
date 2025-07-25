@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { getAllMentors, type MatchMentorOutput } from '@/ai/flows/match-mentor-to-user';
+import { getAllMentors } from '@/ai/flows/match-mentor-to-user';
+import type { MatchMentorOutput } from '@/ai/flows/match-mentor-to-user';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { User } from 'lucide-react';

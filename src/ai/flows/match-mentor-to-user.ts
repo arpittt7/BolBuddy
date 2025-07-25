@@ -58,7 +58,7 @@ Based on the user goals, return a JSON object with the 'mentor' field containing
 `,
 });
 
-export const getAllMentors = ai.defineTool({
+const getAllMentorsTool = ai.defineTool({
   name: 'getAllMentors',
   description: 'Retrieves a list of all available mentors from the database.',
   inputSchema: z.object({}),
@@ -94,6 +94,9 @@ async () => {
   ];
   return mentors;
 });
+export async function getAllMentors(input: {}): Promise<Array<{mentorId: string; name: string; expertise: string; bio: string}>> {
+  return getAllMentorsTool(input);
+}
 
 const matchMentorFlow = ai.defineFlow(
   {
@@ -102,7 +105,7 @@ const matchMentorFlow = ai.defineFlow(
     outputSchema: MatchMentorOutputSchema,
   },
   async input => {
-    const mentors = await getAllMentors({});
+    const mentors = await getAllMentorsTool({});
     const {output} = await prompt({
       ...input,
       mentors,

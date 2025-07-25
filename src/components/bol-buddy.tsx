@@ -4,9 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Mic, MicOff, Send, Loader2 } from 'lucide-react';
+import { Mic, MicOff, Send, Loader2, Volume2 } from 'lucide-react';
 
 import { matchMentor, type MatchMentorOutput } from '@/ai/flows/match-mentor-to-user';
+import { announcementTts } from '@/ai/flows/announcement-tts';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -34,9 +35,11 @@ declare global {
 export function BolBuddy() {
   const [isRecording, setIsRecording] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAnnouncing, setIsAnnouncing] = useState(false);
   const [result, setResult] = useState<MatchMentorOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
   const recognitionRef = useRef<any | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -111,7 +114,21 @@ export function BolBuddy() {
 
     try {
       const response = await matchMentor({ userGoals: data.userGoals });
-      setResult(response);
+      
+      setIsAnnouncing(true);
+      const announcementText = `I found a match for you. ${response.reason}`;
+      const audioResult = await announcementTts(announcementText);
+      
+      const audio = new Audio(audioResult.audioDataUri);
+      audioRef.current = audio;
+      audio.play();
+
+      audio.onended = () => {
+        setIsAnnouncing(false);
+        setResult(response);
+        setIsLoading(false);
+      };
+
     } catch (e) {
       const errorMessage = e instanceof Error ? e.message : "An unknown error occurred.";
       setError(errorMessage);
@@ -120,13 +137,14 @@ export function BolBuddy() {
         title: "Failed to find a mentor",
         description: errorMessage,
       });
-    } finally {
       setIsLoading(false);
+      setIsAnnouncing(false);
     }
   };
 
   return (
     <div className="w-full max-w-2xl space-y-8">
+      <audio ref={audioRef} />
       <Card className="shadow-lg border-none">
         <CardHeader>
           <CardTitle className="font-headline text-3xl">Hello! I'm BolBot.</CardTitle>
@@ -167,10 +185,15 @@ export function BolBuddy() {
                 )}
               />
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? (
+                {isLoading && !isAnnouncing ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Matching...
+                  </>
+                ) : isAnnouncing ? (
+                   <>
+                    <Volume2 className="mr-2 h-4 w-4 animate-pulse" />
+                    Announcing match...
                   </>
                 ) : (
                   <>
@@ -184,7 +207,7 @@ export function BolBuddy() {
         </CardContent>
       </Card>
 
-      {isLoading && (
+      {isLoading && !isAnnouncing && (
          <Card className="border-none">
             <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[200px]">
                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
@@ -200,7 +223,7 @@ export function BolBuddy() {
         </Alert>
       )}
 
-      {result && !isLoading && (
+      {result && !isLoading && !isAnnouncing && (
         <div className="animate-in fade-in-50 duration-500">
             <h2 className="font-headline text-3xl text-center mb-4">I found a match!</h2>
             <MentorCard mentor={result.mentor} reason={result.reason} />
