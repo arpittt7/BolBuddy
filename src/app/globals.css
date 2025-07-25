@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 240 5% 12%;
-    --foreground: 0 0% 98%;
+    --background: 40 38% 90%; /* Beige */
+    --foreground: 20 15% 20%;
 
-    --card: 240 5% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 40 30% 95%;
+    --card-foreground: 20 15% 20%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 40 30% 95%;
+    --popover-foreground: 20 15% 20%;
 
-    --primary: 180 100% 50%; /* Bright Cyan */
-    --primary-foreground: 240 10% 3.9%;
+    --primary: 20 80% 50%; /* Vibrant Orange */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 40 20% 80%;
+    --secondary-foreground: 20 15% 20%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 40 20% 85%;
+    --muted-foreground: 20 10% 45%;
 
-    --accent: 260 50% 50%; /* Purple Accent */
-    --accent-foreground: 0 0% 98%;
+    --accent: 20 80% 55%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 3.7% 25.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 180 100% 50%;
+    --border: 40 20% 80%;
+    --input: 40 20% 85%;
+    --ring: 20 80% 50%;
 
     --radius: 0.8rem;
   }
@@ -80,7 +80,7 @@ body {
   background-color: hsl(var(--background));
   background-image:
     radial-gradient(ellipse 80% 80% at 50% -20%,
-      rgba(120, 119, 198, 0.2),
+      hsla(var(--primary), 0.1),
       rgba(255, 255, 255, 0)
     );
   color: hsl(var(--foreground));
