@@ -24,10 +24,6 @@ export default function RootLayout({
           <div className="wave wave2"></div>
           <div className="wave wave3"></div>
           <div className="wave wave4"></div>
-          <div className="wave-bottom wave1-bottom"></div>
-          <div className="wave-bottom wave2-bottom"></div>
-          <div className="wave-bottom wave3-bottom"></div>
-          <div className="wave-bottom wave4-bottom"></div>
         </div>
         <div className="relative z-10">
             {children}
