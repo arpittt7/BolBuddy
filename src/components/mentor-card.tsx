@@ -13,9 +13,10 @@ type Mentor = MatchMentorOutput['mentor'];
 interface MentorCardProps {
   mentor: Mentor;
   reason: string;
+  language?: string;
 }
 
-export function MentorCard({ mentor, reason }: MentorCardProps) {
+export function MentorCard({ mentor, reason, language }: MentorCardProps) {
   const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const { toast } = useToast();
@@ -32,6 +33,7 @@ export function MentorCard({ mentor, reason }: MentorCardProps) {
       const result = await mentorIntroductionTts({
         name: mentor.name,
         bio: mentor.bio,
+        language: language,
       });
       setAudioSrc(result.audioDataUri);
       const audio = new Audio(result.audioDataUri);

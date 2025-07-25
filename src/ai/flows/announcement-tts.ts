@@ -14,16 +14,17 @@ import {googleAI} from '@genkit-ai/googleai';
 
 const AnnouncementTtsInputSchema = z.object({
   text: z.string().describe('The text to convert to speech.'),
-  language: z.string().describe('The language of the text (e.g., "en-US", "hi-IN").').optional(),
+  language: z
+    .string()
+    .describe('The language of the text (e.g., "en-US", "hi-IN").')
+    .optional(),
 });
 export type AnnouncementTtsInput = z.infer<typeof AnnouncementTtsInputSchema>;
 
 const AnnouncementTtsOutputSchema = z.object({
   audioDataUri: z
     .string()
-    .describe(
-      'The synthesized audio of the announcement, as a data URI.'
-    ),
+    .describe('The synthesized audio of the announcement, as a data URI.'),
 });
 export type AnnouncementTtsOutput = z.infer<
   typeof AnnouncementTtsOutputSchema

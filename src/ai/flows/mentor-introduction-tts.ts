@@ -15,6 +15,7 @@ import {googleAI} from '@genkit-ai/googleai';
 const MentorIntroductionTtsInputSchema = z.object({
   name: z.string().describe("The mentor's name."),
   bio: z.string().describe("The mentor's biography."),
+  language: z.string().describe('The language of the text (e.g., "en-US", "hi-IN").').optional(),
 });
 export type MentorIntroductionTtsInput = z.infer<
   typeof MentorIntroductionTtsInputSchema
@@ -86,6 +87,7 @@ const mentorIntroductionTtsFlow = ai.defineFlow(
           voiceConfig: {
             prebuiltVoiceConfig: {voiceName: 'Algenib'},
           },
+          languageCode: input.language,
         },
       },
       prompt: promptText.prompt,

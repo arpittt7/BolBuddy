@@ -240,7 +240,7 @@ export function BolBuddy() {
       {result && !isLoading && !isAnnouncing && (
         <div className="animate-in fade-in-50 duration-500">
             <h2 className="font-headline text-3xl text-center mb-4">I found a match!</h2>
-            <MentorCard mentor={result.mentor} reason={result.reason} />
+            <MentorCard mentor={result.mentor} reason={result.reason} language={currentLang} />
         </div>
       )}
     </div>
