@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Users, MessageSquareQuote, Download } from 'lucide-react';
+import { Users, MessageSquareQuote, Download, Award } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -81,6 +81,27 @@ export default function Home() {
                 </CardContent>
                 <CardFooter className="justify-center">
                     <Button>Learn More</Button>
+                </CardFooter>
+            </Card>
+        </div>
+        <div className="mt-8 w-full container mx-auto">
+            <Card className="w-full shadow-xl flex flex-col md:flex-row items-center">
+                <CardHeader className="text-center md:text-left">
+                    <div className="mx-auto md:mx-0 bg-primary/10 text-primary p-3 rounded-full w-fit">
+                        <Award className="h-8 w-8" />
+                    </div>
+                </CardHeader>
+                <CardContent className="text-center md:text-left flex-grow p-6">
+                    <CardTitle className="text-3xl font-headline">Audio Badges + Gaatha</CardTitle>
+                    <CardDescription className="text-lg mt-2">
+                        Motivational progress stories in audio form
+                    </CardDescription>
+                    <p className="text-muted-foreground mt-2">
+                        Earn badges as you learn and listen to inspiring stories from others who have achieved their goals. A unique way to track your progress and stay inspired.
+                    </p>
+                </CardContent>
+                <CardFooter className="p-6 justify-center md:justify-end">
+                    <Button>Listen Now</Button>
                 </CardFooter>
             </Card>
         </div>
