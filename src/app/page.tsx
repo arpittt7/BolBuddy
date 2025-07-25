@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, MessageSquareQuote } from 'lucide-react';
+import { Users, MessageSquareQuote, Download } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
         <div className="mt-12 w-full flex justify-center">
             <BolBuddy />
         </div>
-        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
              <Card className="w-full shadow-xl">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
@@ -55,6 +55,23 @@ export default function Home() {
                         Have a question you're hesitant to ask? Use your voice to ask it anonymously and get the answers you need without revealing your identity.
                     </p>
                     <Button>Ask Anonymously</Button>
+                </CardContent>
+            </Card>
+            <Card className="w-full shadow-xl">
+                <CardHeader className="text-center">
+                    <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
+                        <Download className="h-8 w-8" />
+                    </div>
+                    <CardTitle className="text-3xl font-headline mt-4">Shruti Mode</CardTitle>
+                    <CardDescription className="text-lg">
+                        Works offline via downloaded audio
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                     <p className="text-muted-foreground mb-6">
+                        Access your learning materials anytime, anywhere, even without an internet connection. Download audio content and continue your progress offline.
+                    </p>
+                    <Button>Learn More</Button>
                 </CardContent>
             </Card>
         </div>
