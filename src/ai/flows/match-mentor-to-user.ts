@@ -15,6 +15,7 @@ const MatchMentorInputSchema = z.object({
   userGoals: z
     .string()
     .describe('The recorded goals of the user, expressed as a text string.'),
+  language: z.string().describe('The language of the user goals (e.g., "en-US", "hi-IN").').optional(),
 });
 export type MatchMentorInput = z.infer<typeof MatchMentorInputSchema>;
 
@@ -39,12 +40,16 @@ const prompt = ai.definePrompt({
   name: 'matchMentorPrompt',
   input: {schema: z.object({
     userGoals: z.string(),
-    mentors: z.any()
+    mentors: z.any(),
+    language: z.string().optional(),
   })},
   output: {schema: MatchMentorOutputSchema},
   prompt: `You are an AI mentor matching service called BolBot. Given the user's goals, recommend a mentor from the following list. Explain the reasoning behind your choice, citing the mentor's expertise and bio.
 
+You MUST respond in the same language as the user's goals. The language is specified in the 'language' field.
+
 User Goals: {{{userGoals}}}
+Language: {{{language}}}
 
 Mentors:
 {{#each mentors}}

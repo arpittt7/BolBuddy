@@ -12,7 +12,10 @@ import {z} from 'genkit';
 import wav from 'wav';
 import {googleAI} from '@genkit-ai/googleai';
 
-const AnnouncementTtsInputSchema = z.string();
+const AnnouncementTtsInputSchema = z.object({
+  text: z.string().describe('The text to convert to speech.'),
+  language: z.string().describe('The language of the text (e.g., "en-US", "hi-IN").').optional(),
+});
 export type AnnouncementTtsInput = z.infer<typeof AnnouncementTtsInputSchema>;
 
 const AnnouncementTtsOutputSchema = z.object({
@@ -74,9 +77,10 @@ const announcementTtsFlow = ai.defineFlow(
           voiceConfig: {
             prebuiltVoiceConfig: {voiceName: 'Algenib'},
           },
+          languageCode: input.language,
         },
       },
-      prompt: input,
+      prompt: input.text,
     });
 
     if (!media) {

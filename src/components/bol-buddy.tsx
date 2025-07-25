@@ -38,6 +38,7 @@ export function BolBuddy() {
   const [isAnnouncing, setIsAnnouncing] = useState(false);
   const [result, setResult] = useState<MatchMentorOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [currentLang, setCurrentLang] = useState('en-US');
   const recognitionRef = useRef<any | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
@@ -51,12 +52,19 @@ export function BolBuddy() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      try {
+        const lang = navigator.language || 'en-US';
+        setCurrentLang(lang);
+      } catch (e) {
+        console.warn("Could not detect language, defaulting to en-US");
+      }
+
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.continuous = false;
         recognition.interimResults = false;
-        recognition.lang = 'en-US';
+        recognition.lang = currentLang;
 
         recognition.onresult = (event: any) => {
           const transcript = event.results[0][0].transcript;
@@ -84,7 +92,13 @@ export function BolBuddy() {
         recognitionRef.current = recognition;
       }
     }
-  }, [form, toast, isRecording]);
+  }, [form, toast, isRecording, currentLang]);
+
+  useEffect(() => {
+    if(recognitionRef.current) {
+        recognitionRef.current.lang = currentLang;
+    }
+  }, [currentLang])
 
   const handleToggleRecording = () => {
     if (!recognitionRef.current) {
@@ -113,11 +127,11 @@ export function BolBuddy() {
     setError(null);
 
     try {
-      const response = await matchMentor({ userGoals: data.userGoals });
+      const response = await matchMentor({ userGoals: data.userGoals, language: currentLang });
       
       setIsAnnouncing(true);
       const announcementText = `I found a match for you. ${response.reason}`;
-      const audioResult = await announcementTts(announcementText);
+      const audioResult = await announcementTts({text: announcementText, language: currentLang});
       
       const audio = new Audio(audioResult.audioDataUri);
       audioRef.current = audio;
