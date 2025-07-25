@@ -37,20 +37,22 @@ export async function matchMentor(input: MatchMentorInput): Promise<MatchMentorO
 
 const prompt = ai.definePrompt({
   name: 'matchMentorPrompt',
-  input: {schema: MatchMentorInputSchema},
+  input: {schema: z.object({
+    userGoals: z.string(),
+    mentors: z.any()
+  })},
   output: {schema: MatchMentorOutputSchema},
-  prompt: `You are an AI mentor matching service. Given the user's goals, recommend a mentor from the following list. Explain the reasoning behind your choice, citing the mentor's expertise and bio.
+  prompt: `You are an AI mentor matching service called BolBot. Given the user's goals, recommend a mentor from the following list. Explain the reasoning behind your choice, citing the mentor's expertise and bio.
 
 User Goals: {{{userGoals}}}
 
 Mentors:
-
-{% for mentor in mentors %}
-Name: {{mentor.name}}
-Expertise: {{mentor.expertise}}
-Bio: {{mentor.bio}}
-ID: {{mentor.mentorId}}
-{% endfor %}
+{{#each mentors}}
+Name: {{this.name}}
+Expertise: {{this.expertise}}
+Bio: {{this.bio}}
+ID: {{this.mentorId}}
+{{/each}}
 
 Based on the user goals, return a JSON object with the 'mentor' field containing the mentor's information and a 'reason' field explaining why this mentor is a good match for the user. The mentor object must contain the mentorId, name, expertise, and bio fields.
 `,
@@ -83,6 +85,12 @@ async () => {
       expertise: 'Mobile Development, Swift, iOS',
       bio: 'Mobile app developer specializing in iOS development. Passionate about building mobile apps and sharing knowledge.',
     },
+     {
+      mentorId: '4',
+      name: 'Rahul Kumar',
+      expertise: 'Python, Hindi',
+      bio: 'A software developer from Delhi who is fluent in Hindi and specializes in Python.',
+    }
   ];
   return mentors;
 });

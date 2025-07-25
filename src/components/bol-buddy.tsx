@@ -127,11 +127,11 @@ export function BolBuddy() {
 
   return (
     <div className="w-full max-w-2xl space-y-8">
-      <Card className="shadow-lg">
+      <Card className="shadow-lg border-none">
         <CardHeader>
-          <CardTitle className="font-headline text-3xl">What are your goals?</CardTitle>
+          <CardTitle className="font-headline text-3xl">Hello! I'm BolBot.</CardTitle>
           <CardDescription>
-            Tell us what you want to achieve. You can type or use your voice.
+            Just speak your goals, and I'll connect you with the right mentor. You can also type if you prefer.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -146,7 +146,7 @@ export function BolBuddy() {
                     <FormControl>
                       <div className="relative">
                         <Textarea
-                          placeholder="e.g., 'I want to learn coding to get a job' or 'I want to start my own business...'"
+                          placeholder="e.g., 'Mujhe coding seekhna hai.' or 'I want to start my own business...'"
                           className="min-h-[120px] resize-none pr-12 text-base"
                           {...field}
                         />
@@ -185,7 +185,7 @@ export function BolBuddy() {
       </Card>
 
       {isLoading && (
-         <Card>
+         <Card className="border-none">
             <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[200px]">
                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
                 <p className="text-muted-foreground">Finding the perfect mentor for you...</p>
@@ -202,7 +202,7 @@ export function BolBuddy() {
 
       {result && !isLoading && (
         <div className="animate-in fade-in-50 duration-500">
-            <h2 className="font-headline text-3xl text-center mb-4">We found a match!</h2>
+            <h2 className="font-headline text-3xl text-center mb-4">I found a match!</h2>
             <MentorCard mentor={result.mentor} reason={result.reason} />
         </div>
       )}

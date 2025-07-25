@@ -6,7 +6,7 @@ export default function Home() {
       <div className="w-full max-w-2xl mx-auto">
         <header className="text-center mb-8">
           <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold text-primary">BolBuddy</h1>
-          <p className="text-muted-foreground mt-2 text-lg">Your personal guide to success, one voice at a time.</p>
+          <p className="text-muted-foreground mt-2 text-lg">A voice-powered learning and mentorship experience for youth with limited resources.</p>
         </header>
         <BolBuddy />
       </div>
