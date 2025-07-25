@@ -58,7 +58,7 @@ Based on the user goals, return a JSON object with the 'mentor' field containing
 `,
 });
 
-const getAllMentors = ai.defineTool({
+export const getAllMentors = ai.defineTool({
   name: 'getAllMentors',
   description: 'Retrieves a list of all available mentors from the database.',
   inputSchema: z.object({}),

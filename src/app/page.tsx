@@ -1,4 +1,5 @@
 import { BolBuddy } from '@/components/bol-buddy';
+import { MentorsList } from '@/components/mentors-list';
 
 export default function Home() {
   return (
@@ -9,6 +10,9 @@ export default function Home() {
           <p className="text-muted-foreground mt-2 text-lg">A voice-powered learning and mentorship experience for youth with limited resources.</p>
         </header>
         <BolBuddy />
+      </div>
+      <div className="w-full max-w-4xl mx-auto mt-16">
+        <MentorsList />
       </div>
     </main>
   );
