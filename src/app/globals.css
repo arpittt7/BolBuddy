@@ -91,7 +91,7 @@ body {
     z-index: 0;
 }
 
-.wave {
+.wave, .wave-bottom {
     position: absolute;
     left: 0;
     width: 200%;
@@ -100,18 +100,26 @@ body {
     background-size: cover;
     animation: wave-animation 15s linear infinite;
     opacity: 0.1;
+}
+
+.wave {
     bottom: auto;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.wave1 {
+.wave-bottom {
+    bottom: 0;
+    transform: translateY(0);
+}
+
+.wave1, .wave1-bottom {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3e%3cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' style='fill:hsl(var(--primary));opacity:0.2'%3e%3c/path%3e%3c/svg%3e");
     animation-duration: 20s;
     height: 150px;
 }
 
-.wave2 {
+.wave2, .wave2-bottom {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3e%3cpath d='M900,112.77C712,112.77,600,60,600,60S488,10.23,300,10.23,120,60,120,60,0,112.77,0,112.77V0h1200V112.77Z' style='fill:hsl(var(--accent));opacity:0.2'%3e%3c/path%3e%3c/svg%3e");
     animation-duration: 25s;
     animation-direction: reverse;
@@ -119,13 +127,13 @@ body {
     height: 180px;
 }
 
-.wave3 {
+.wave3, .wave3-bottom {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3e%3cpath d='M-168.24,53.84c360.89-61.18,722.34-31.54,1053,18.73,153.4,23.33,305,53.74,453.64,30.33V0H-271.74Z' style='fill:hsl(var(--secondary));opacity:0.2'%3e%3c/path%3e%3c/svg%3e");
     animation-duration: 30s;
     height: 220px;
 }
 
-.wave4 {
+.wave4, .wave4-bottom {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3e%3cpath d='M1200,0C989.6,0,800,120,600,120S210.4,0,0,0V120H1200Z' style='fill:hsl(var(--background));opacity:0.2'%3e%3c/path%3e%3c/svg%3e");
     animation-duration: 35s;
     animation-direction: reverse;
