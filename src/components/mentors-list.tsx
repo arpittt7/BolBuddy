@@ -12,7 +12,7 @@ type Mentor = MatchMentorOutput['mentor'];
 
 function MentorListItem({ mentor }: { mentor: Mentor }) {
     return (
-        <Card className="border-none shadow-lg">
+        <Card className="bg-card/80 backdrop-blur-sm border-white/20 shadow-xl transform transition-all duration-300 hover:scale-105">
             <CardHeader className="flex flex-row items-center gap-4">
                 <Avatar className="h-16 w-16">
                     <AvatarImage src={`https://placehold.co/128x128.png`} alt={mentor.name} data-ai-hint="profile picture" />
@@ -57,18 +57,18 @@ export function MentorsList() {
 
     return (
         <section>
-            <h2 className="font-headline text-3xl text-center mb-8">Meet Our Mentors</h2>
+            <h2 className="font-headline text-4xl text-center mb-8 text-glow">Meet Our Mentors</h2>
             {isLoading && (
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Skeleton className="h-48" />
-                    <Skeleton className="h-48" />
-                    <Skeleton className="h-48" />
-                    <Skeleton className="h-48" />
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <Skeleton className="h-48 rounded-xl" />
+                    <Skeleton className="h-48 rounded-xl" />
+                    <Skeleton className="h-48 rounded-xl" />
+                    <Skeleton className="h-48 rounded-xl" />
                 </div>
             )}
             {error && <p className="text-destructive text-center">{error}</p>}
             {!isLoading && !error && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {mentors.map(mentor => (
                         <MentorListItem key={mentor.mentorId} mentor={mentor} />
                     ))}

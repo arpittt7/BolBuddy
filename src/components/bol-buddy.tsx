@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Mic, MicOff, Send, Loader2, Volume2 } from 'lucide-react';
+import { Mic, MicOff, Send, Loader2, Volume2, Sparkles } from 'lucide-react';
 
 import { matchMentor, type MatchMentorOutput } from '@/ai/flows/match-mentor-to-user';
 import { announcementTts } from '@/ai/flows/announcement-tts';
@@ -158,11 +158,11 @@ export function BolBuddy() {
   return (
     <div className="w-full max-w-2xl space-y-8">
       <audio ref={audioRef} />
-      <Card className="shadow-lg border-none">
-        <CardHeader>
+      <Card className="bg-card/80 backdrop-blur-sm border-white/20 shadow-xl">
+        <CardHeader className="text-center">
           <CardTitle className="font-headline text-3xl">Hello! I'm BolBot.</CardTitle>
           <CardDescription>
-            Just speak your goals, and I'll connect you with the right mentor. You can also type if you prefer.
+            Speak or type your goals, and I'll connect you with the right mentor.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -178,7 +178,7 @@ export function BolBuddy() {
                       <div className="relative">
                         <Textarea
                           placeholder="e.g., 'Mujhe coding seekhna hai.' or 'I want to start my own business...'"
-                          className="min-h-[120px] resize-none pr-12 text-base"
+                          className="min-h-[120px] resize-none pr-12 text-base bg-background/80"
                           {...field}
                         />
                         <Button
@@ -197,7 +197,7 @@ export function BolBuddy() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" className="w-full text-lg font-bold" disabled={isLoading}>
                 {isLoading && !isAnnouncing ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -210,7 +210,7 @@ export function BolBuddy() {
                   </>
                 ) : (
                   <>
-                    <Send className="mr-2 h-4 w-4" />
+                    <Sparkles className="mr-2 h-4 w-4" />
                     Find My Mentor
                   </>
                 )}
@@ -221,7 +221,7 @@ export function BolBuddy() {
       </Card>
 
       {isLoading && !isAnnouncing && (
-         <Card className="border-none">
+         <Card className="bg-card/80 backdrop-blur-sm border-white/20">
             <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[200px]">
                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
                 <p className="text-muted-foreground">Finding the perfect mentor for you...</p>
@@ -238,7 +238,7 @@ export function BolBuddy() {
 
       {result && !isLoading && !isAnnouncing && (
         <div className="animate-in fade-in-50 duration-500">
-            <h2 className="font-headline text-3xl text-center mb-4">I found a match!</h2>
+            <h2 className="font-headline text-3xl text-center mb-4 text-glow">I found a match!</h2>
             <MentorCard mentor={result.mentor} reason={result.reason} language={currentLang} />
         </div>
       )}
