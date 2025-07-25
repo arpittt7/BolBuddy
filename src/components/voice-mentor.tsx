@@ -31,7 +31,7 @@ declare global {
   }
 }
 
-export function VoiceMentor() {
+export function BolBuddy() {
   const [isRecording, setIsRecording] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<MatchMentorOutput | null>(null);
