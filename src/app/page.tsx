@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Users, MessageSquareQuote, Download } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -58,7 +59,9 @@ export default function Home() {
                     </p>
                 </CardContent>
                 <CardFooter className="justify-center">
-                    <Button>Ask Anonymously</Button>
+                    <Link href="/whisper-ask">
+                        <Button>Ask Anonymously</Button>
+                    </Link>
                 </CardFooter>
             </Card>
             <Card className="w-full shadow-xl flex flex-col">
