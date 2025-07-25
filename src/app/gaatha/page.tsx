@@ -4,25 +4,49 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const courses = [
     {
-        title: 'Communication',
-        description: 'Master the art of effective communication.',
+        title: 'Guvi (by IIT Madras)',
+        description: 'Free courses in vernacular languages (Tamil, Hindi, Telugu). Teaches coding, AI/ML, Python, Web Dev.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'communication skills'
+        dataAiHint: 'online learning',
+        href: 'https://www.guvi.in/'
     },
     {
-        title: 'Work Life Balance',
-        description: 'Achieve harmony between your professional and personal life.',
+        title: 'Mentor India (by NITI Aayog)',
+        description: 'Government initiative to connect industry experts with young students. Especially targets underserved areas.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'work-life balance'
+        dataAiHint: 'mentorship community',
+        href: 'https://aim.gov.in/mentor-india.php'
     },
     {
-        title: 'Spiritual',
-        description: 'Embark on a journey of inner peace and spiritual growth.',
+        title: 'Unschool & Internshala',
+        description: 'Some free basic mentorship via webinars and trial courses. Good for career skills, resumes, etc.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'spiritual meditation'
+        dataAiHint: 'career skills'
+    },
+    {
+        title: 'FreeCodeCamp',
+        description: 'Structured learning paths with community support. Many learners become mentors in forums.',
+        image: 'https://placehold.co/600x400.png',
+        dataAiHint: 'coding community',
+        href: 'https://www.freecodecamp.org/'
+    },
+    {
+        title: 'Code.org',
+        description: 'Ideal for beginners, especially school kids learning programming basics. Available in multiple languages.',
+        image: 'https://placehold.co/600x400.png',
+        dataAiHint: 'learning programming',
+        href: 'https://code.org/'
+    },
+    {
+        title: 'Think-Digital (by NavGurukul)',
+        description: 'Teaches underprivileged youth coding + helps them get jobs. Sometimes offers offline residential programs too.',
+        image: 'https://placehold.co/600x400.png',
+        dataAiHint: 'underprivileged education',
+        href: 'https://www.thinknavgurukul.org/'
     }
 ]
 
@@ -63,12 +87,12 @@ export default function GaathaPage() {
                     <TabsContent value="gaatha">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Free Gaatha Courses</CardTitle>
+                                <CardTitle>Free Mentorship Platforms</CardTitle>
                                 <CardDescription>
-                                   Explore our collection of free courses to help you grow.
+                                   Explore our collection of free courses and mentorship platforms to help you grow.
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {courses.map(course => (
                                     <Card key={course.title} className="w-full shadow-xl flex flex-col">
                                         <CardHeader className="p-0">
@@ -81,7 +105,13 @@ export default function GaathaPage() {
                                             </p>
                                         </CardContent>
                                         <CardFooter>
-                                            <Button className="w-full">Start Now</Button>
+                                            {course.href ? (
+                                                <Link href={course.href} target="_blank" rel="noopener noreferrer" className="w-full">
+                                                    <Button className="w-full">Visit Site</Button>
+                                                </Link>
+                                            ) : (
+                                                <Button className="w-full">Explore</Button>
+                                            )}
                                         </CardFooter>
                                     </Card>
                                 ))}
