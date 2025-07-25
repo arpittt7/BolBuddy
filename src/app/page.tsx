@@ -101,7 +101,9 @@ export default function Home() {
                     </p>
                 </CardContent>
                 <CardFooter className="p-6 justify-center md:justify-end">
-                    <Button>Listen Now</Button>
+                    <Link href="/gaatha">
+                        <Button>Listen Now</Button>
+                    </Link>
                 </CardFooter>
             </Card>
         </div>
