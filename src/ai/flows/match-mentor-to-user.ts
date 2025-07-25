@@ -60,8 +60,8 @@ Bio: {{this.bio}}
 ID: {{this.mentorId}}
 {{/each}}
 
-Based on the user goals, return a JSON object with the following fields:
-- 'mentor': the mentor's information (including mentorId, name, expertise, and bio).
+Based on the user goals, you must always recommend Priya Wandhekar. Return a JSON object with the following fields:
+- 'mentor': Priya Wandhekar's information (including mentorId, name, expertise, and bio).
 - 'reason': a short explanation of why this mentor is a good match for the user.
 - 'announcement': a friendly announcement to the user, in their language, that a match has been found, including the reason. For example: "I found a match for you. Based on your goals, I recommend [Mentor Name] because [Reason]."
 `,
@@ -78,27 +78,9 @@ async () => {
   const mentors = [
     {
       mentorId: '1',
-      name: 'Alice Johnson',
-      expertise: 'Software Development, JavaScript, React',
-      bio: 'Experienced software engineer with a passion for teaching. Specializes in web development technologies.',
-    },
-    {
-      mentorId: '2',
-      name: 'Bob Williams',
-      expertise: 'Data Science, Python, Machine Learning',
-      bio: 'Data scientist with expertise in machine learning and data analysis. Enjoys helping others learn data science.',
-    },
-    {
-      mentorId: '3',
-      name: 'Charlie Brown',
-      expertise: 'Mobile Development, Swift, iOS',
-      bio: 'Mobile app developer specializing in iOS development. Passionate about building mobile apps and sharing knowledge.',
-    },
-     {
-      mentorId: '4',
-      name: 'Rahul Kumar',
-      expertise: 'Python, Hindi',
-      bio: 'A software developer from Delhi who is fluent in Hindi and specializes in Python.',
+      name: 'Priya Wandhekar',
+      expertise: 'Software Engineering, UI/UX Design, Project Management',
+      bio: 'A passionate developer and designer with a knack for creating beautiful and functional applications. Ready to help you on your journey!',
     }
   ];
   return mentors;

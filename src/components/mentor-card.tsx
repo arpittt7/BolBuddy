@@ -6,7 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, PlayCircle, User } from "lucide-react";
+import { Loader2, PlayCircle, User, Mail } from "lucide-react";
+import Link from "next/link";
 
 type Mentor = MatchMentorOutput['mentor'];
 
@@ -75,7 +76,7 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
           <p className="text-muted-foreground">{reason}</p>
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex flex-col sm:flex-row gap-2">
         <Button className="w-full" variant="outline" onClick={handleListenToBio} disabled={isGeneratingAudio}>
            {isGeneratingAudio ? (
             <>
@@ -89,6 +90,12 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
             </>
           )}
         </Button>
+        <Link href="/contact" className="w-full">
+            <Button className="w-full">
+                <Mail className="mr-2 h-5 w-5" />
+                Get In Contact
+            </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
