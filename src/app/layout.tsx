@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'BolBuddy',
-  description: 'Your personal guide to success, one voice at a time.',
+  title: 'AutoTune',
+  description: 'The Ultimate Vocal Production Suite',
 };
 
 export default function RootLayout({
@@ -13,15 +13,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        {children}
+        <div className="wavy-background">
+          <div className="wave wave1"></div>
+          <div className="wave wave2"></div>
+          <div className="wave wave3"></div>
+        </div>
+        <div className="relative z-10">
+            {children}
+        </div>
         <Toaster />
       </body>
     </html>
