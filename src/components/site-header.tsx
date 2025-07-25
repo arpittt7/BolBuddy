@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 
 export function SiteHeader() {
   const navLinks = [
-    'Features', 'About', 'Pricing', 'Contact'
+    'Features', 'About', 'Contact'
   ];
 
   return (
@@ -14,7 +14,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <Mic className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold text-foreground">BolBot</span>
+              <span className="text-2xl font-bold text-foreground">BolBuddy</span>
             </div>
             <nav className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
@@ -29,7 +29,6 @@ export function SiteHeader() {
                 <Button variant="ghost" className="text-foreground/80 hover:text-foreground">
                     Sign In
                 </Button>
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full">Get Started</Button>
              </div>
             <Button variant="ghost" size="icon" className="md:hidden text-foreground/80 hover:text-foreground">
               <Menu className="h-6 w-6" />
