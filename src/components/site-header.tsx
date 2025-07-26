@@ -38,6 +38,9 @@ export function SiteHeader() {
           </div>
           <div className="flex items-center gap-4">
              <div className="hidden md:flex items-center gap-4">
+                 <Link href="/whisper-ask">
+                    <Button variant="ghost">WhisperAsk</Button>
+                 </Link>
                 {user ? (
                     <>
                         <Avatar className="h-9 w-9">

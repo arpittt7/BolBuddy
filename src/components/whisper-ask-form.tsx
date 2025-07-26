@@ -184,4 +184,3 @@ export function WhisperAskForm() {
     </div>
   );
 }
-
