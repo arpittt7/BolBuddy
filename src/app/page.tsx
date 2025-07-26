@@ -25,7 +25,7 @@ export default function Home() {
                 {t('home.hero.subtitle')}
             </p>
         </Card>
-        <div className="w-full flex justify-center">
+        <div className="w-full container mx-auto">
             <BolBuddy />
         </div>
         <div className="w-full container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -92,7 +92,7 @@ export default function Home() {
                     </Link>
                 </CardFooter>
             </Card>
-            <Card className="w-full shadow-xl flex flex-col">
+             <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
                         <Video className="h-8 w-8" />

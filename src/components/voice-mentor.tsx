@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Mic, MicOff, Send, Loader2 } from 'lucide-react';
+import { Mic, MicOff, Send, Loader2, Lightbulb } from 'lucide-react';
 
 import { matchMentor, type MatchMentorOutput } from '@/ai/flows/match-mentor-to-user';
 import { Button } from '@/components/ui/button';
@@ -130,67 +130,80 @@ export function BolBuddy() {
   };
 
   return (
-    <div className="w-full max-w-2xl space-y-8">
+    <div className="w-full max-w-4xl mx-auto space-y-8">
       <Card className="shadow-lg relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full text-primary/10 -z-10">
-          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
-            <path fill="currentColor" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,245.3C672,267,768,277,864,256C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-          </svg>
+        <div className="absolute top-0 left-0 w-full h-full text-primary/10 -z-10 hidden md:block">
+            <svg className="absolute -left-16 -top-16 w-64 h-64 text-primary/5 opacity-50" fill="currentColor" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M49.8,-53.4C62.8,-42.6,70.5,-26.4,72.5,-9.3C74.5,7.7,70.8,25.6,60.8,39.3C50.8,53,34.5,62.5,17.7,66.4C0.9,70.3,-16.4,68.6,-32.1,61.1C-47.8,53.6,-61.9,40.3,-68.8,24.8C-75.7,9.3,-75.4,-8.4,-68.7,-23.4C-62,-38.4,-48.9,-50.7,-34.9,-57.8C-20.9,-64.9,-6,-66.8,8.2,-64.5C22.4,-62.2,44.8,-64.2,49.8,-53.4Z" transform="translate(100 100)" />
+            </svg>
+             <svg className="absolute -right-16 -bottom-16 w-64 h-64 text-primary/5 opacity-50" fill="currentColor" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M54.4,-57.9C68.9,-47,78.2,-29.4,79.9,-11.1C81.6,7.2,75.7,26.2,64.8,42.2C53.9,58.2,38,71.2,19.9,76.5C1.8,81.8,-18.6,79.4,-36.8,70.2C-55,61,-71.1,45,-77.9,26.4C-84.7,7.8,-82.3,-13.3,-72.2,-29.3C-62.1,-45.3,-44.3,-56.2,-27.7,-63.3C-11.1,-70.4,4.3,-73.7,20.4,-70.7C36.5,-67.7,40,-58.8,54.4,-57.9Z" transform="translate(100 100)" />
+            </svg>
+            <Lightbulb className="absolute top-8 left-8 w-16 h-16 text-primary/5 opacity-80 -rotate-12" />
+            <Mic className="absolute bottom-8 right-8 w-16 h-16 text-primary/5 opacity-80 rotate-12" />
         </div>
-        <CardHeader className="relative z-10">
-          <CardTitle className="font-headline text-3xl">{t('bolbuddy.title')}</CardTitle>
-          <CardDescription>
-            {t('bolbuddy.description')}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="relative z-10">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="userGoals"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="sr-only">{t('bolbuddy.form.label')}</FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Textarea
-                          placeholder={t('bolbuddy.form.placeholder')}
-                          className="min-h-[120px] resize-none pr-12 text-base bg-background/80"
-                          {...field}
-                        />
-                        <Button
-                          type="button"
-                          size="icon"
-                          variant={isRecording ? "destructive" : "ghost"}
-                          onClick={handleToggleRecording}
-                          className="absolute right-2 top-1/2 -translate-y-1/2"
-                          aria-label={isRecording ? t('bolbuddy.form.stopRecording') : t('bolbuddy.form.startRecording')}
-                        >
-                          {isRecording ? <MicOff /> : <Mic />}
-                        </Button>
-                      </div>
-                    </FormControl>
-                    <FormMessage>{form.formState.errors.userGoals && tError(form.formState.errors.userGoals.message)}</FormMessage>
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {t('bolbuddy.form.button.loading')}
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2 h-4 w-4" />
-                    {t('bolbuddy.form.button.default')}
-                  </>
-                )}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
+
+        <div className="md:grid md:grid-cols-5 md:gap-8 p-6 md:p-8">
+            <div className="md:col-span-3">
+                <CardHeader className="p-0">
+                    <CardTitle className="font-headline text-3xl">{t('bolbuddy.title')}</CardTitle>
+                    <CardDescription>
+                        {t('bolbuddy.description')}
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 mt-6">
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                        control={form.control}
+                        name="userGoals"
+                        render={({ field }) => (
+                        <FormItem>
+                            <FormLabel className="sr-only">{t('bolbuddy.form.label')}</FormLabel>
+                            <FormControl>
+                            <div className="relative">
+                                <Textarea
+                                placeholder={t('bolbuddy.form.placeholder')}
+                                className="min-h-[120px] resize-none pr-12 text-base bg-background/80"
+                                {...field}
+                                />
+                                <Button
+                                type="button"
+                                size="icon"
+                                variant={isRecording ? "destructive" : "ghost"}
+                                onClick={handleToggleRecording}
+                                className="absolute right-2 top-1/2 -translate-y-1/2"
+                                aria-label={isRecording ? t('bolbuddy.form.stopRecording') : t('bolbuddy.form.startRecording')}
+                                >
+                                {isRecording ? <MicOff /> : <Mic />}
+                                </Button>
+                            </div>
+                            </FormControl>
+                            <FormMessage>{form.formState.errors.userGoals && tError(form.formState.errors.userGoals.message)}</FormMessage>
+                        </FormItem>
+                        )}
+                    />
+                    <Button type="submit" className="w-full" disabled={isLoading}>
+                        {isLoading ? (
+                        <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            {t('bolbuddy.form.button.loading')}
+                        </>
+                        ) : (
+                        <>
+                            <Send className="mr-2 h-4 w-4" />
+                            {t('bolbuddy.form.button.default')}
+                        </>
+                        )}
+                    </Button>
+                    </form>
+                </Form>
+                </CardContent>
+            </div>
+            <div className="hidden md:col-span-2 md:flex items-center justify-center">
+                 <Mic className="w-32 h-32 text-primary/10" />
+            </div>
+        </div>
       </Card>
 
       {isLoading && (
