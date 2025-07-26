@@ -114,32 +114,6 @@ export default function Home() {
             </Card>
         </div>
          <div className="w-full container mx-auto">
-            <Card className="w-full shadow-xl flex flex-col md:flex-row items-center">
-                <CardHeader className="text-center md:text-left">
-                    <div className="mx-auto md:mx-0 bg-primary/10 text-primary p-3 rounded-full w-fit">
-                        <Compass className="h-8 w-8" />
-                    </div>
-                </CardHeader>
-                <CardContent className="text-center md:text-left flex-grow p-6">
-                    <CardTitle className="text-3xl font-headline">{t('home.features.careerExplorer.title')}</CardTitle>
-                    <CardDescription className="text-lg mt-2">
-                        {t('home.features.careerExplorer.subtitle')}
-                    </CardDescription>
-                    <ul className="text-muted-foreground mt-2 list-disc list-inside text-left space-y-1">
-                        <li>{t('home.features.careerExplorer.item1')}</li>
-                        <li>{t('home.features.careerExplorer.item2')}</li>
-                        <li>{t('home.features.careerExplorer.item3')}</li>
-                    </ul>
-                     <p className="text-muted-foreground mt-4 font-semibold">
-                       {t('home.features.careerExplorer.cta')}
-                    </p>
-                </CardContent>
-                <CardFooter className="p-6 justify-center md:justify-end">
-                    <Button>{t('home.features.careerExplorer.button')}</Button>
-                </CardFooter>
-            </Card>
-        </div>
-         <div className="w-full container mx-auto">
                 <Card className="w-full shadow-xl">
                     <CardHeader className="flex flex-row items-center gap-4 p-6">
                         <div className="bg-primary/10 text-primary p-3 rounded-full w-fit">
