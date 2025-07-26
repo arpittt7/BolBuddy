@@ -131,14 +131,19 @@ export function BolBuddy() {
 
   return (
     <div className="w-full max-w-2xl space-y-8">
-      <Card className="shadow-lg">
-        <CardHeader>
+      <Card className="shadow-lg relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full text-primary/10 -z-10">
+          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,245.3C672,267,768,277,864,256C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+          </svg>
+        </div>
+        <CardHeader className="relative z-10">
           <CardTitle className="font-headline text-3xl">{t('bolbuddy.title')}</CardTitle>
           <CardDescription>
             {t('bolbuddy.description')}
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="relative z-10">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -151,7 +156,7 @@ export function BolBuddy() {
                       <div className="relative">
                         <Textarea
                           placeholder={t('bolbuddy.form.placeholder')}
-                          className="min-h-[120px] resize-none pr-12 text-base"
+                          className="min-h-[120px] resize-none pr-12 text-base bg-background/80"
                           {...field}
                         />
                         <Button
