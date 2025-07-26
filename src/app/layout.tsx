@@ -19,15 +19,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
-      <body className="antialiased">
-        <div className="stars"></div>
-        <div className="twinkling"></div>
-        <div className="relative z-10">
-            <AuthProvider>
-                {children}
-                <Toaster />
-            </AuthProvider>
-        </div>
+      <body>
+        <AuthProvider>
+            {children}
+            <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
