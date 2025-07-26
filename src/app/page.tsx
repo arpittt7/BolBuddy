@@ -27,7 +27,7 @@ export default function Home() {
         <div className="w-full flex justify-center">
             <BolBuddy />
         </div>
-        <div className="w-full container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="w-full container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
              <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
@@ -87,25 +87,6 @@ export default function Home() {
                 </CardContent>
                 <CardFooter className="justify-center">
                     <Button>{t('home.features.shruti.button')}</Button>
-                </CardFooter>
-            </Card>
-            <Card className="w-full shadow-xl flex flex-col">
-                <CardHeader className="text-center">
-                    <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
-                        <Video className="h-8 w-8" />
-                    </div>
-                    <CardTitle className="text-3xl font-headline mt-4">Live Sessions</CardTitle>
-                    <CardDescription className="text-lg">
-                        Join expert-led live classes
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="text-center flex-grow">
-                     <p className="text-muted-foreground">
-                        Participate in real-time sessions with mentors, ask questions, and learn with a community.
-                    </p>
-                </CardContent>
-                <CardFooter className="justify-center">
-                    <Button>View Schedule</Button>
                 </CardFooter>
             </Card>
         </div>
