@@ -15,7 +15,8 @@ interface Mentor {
   bio: string;
 }
 
-export default function MentorPage({ params: { mentorId } }: { params: { mentorId: string } }) {
+export default function MentorPage({ params }: { params: { mentorId: string } }) {
+    const { mentorId } = params;
     const [mentor, setMentor] = useState<Mentor | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
