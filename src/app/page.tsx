@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Users, Download, Award } from 'lucide-react';
+import { Users, Download, Award, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
         <div className="mt-12 w-full flex justify-center">
             <BolBuddy />
         </div>
-        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
              <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
@@ -42,6 +42,27 @@ export default function Home() {
                  <CardFooter className="justify-center">
                     <Link href="/gupshup">
                         <Button>Join a Group</Button>
+                    </Link>
+                </CardFooter>
+            </Card>
+            <Card className="w-full shadow-xl flex flex-col">
+                <CardHeader className="text-center">
+                    <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
+                        <HelpCircle className="h-8 w-8" />
+                    </div>
+                    <CardTitle className="text-3xl font-headline mt-4">WhisperAsk</CardTitle>
+                    <CardDescription className="text-lg">
+                        Ask questions anonymously
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="text-center flex-grow">
+                     <p className="text-muted-foreground">
+                        Have a question you're hesitant to ask? Use WhisperAsk to get answers from mentors anonymously and confidentially.
+                    </p>
+                </CardContent>
+                <CardFooter className="justify-center">
+                    <Link href="/whisper-ask">
+                        <Button>Ask a Question</Button>
                     </Link>
                 </CardFooter>
             </Card>
