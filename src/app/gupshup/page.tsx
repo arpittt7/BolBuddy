@@ -3,25 +3,30 @@ import { SiteHeader } from '@/components/site-header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Coffee, Code, Bot, Component } from 'lucide-react';
+import Link from 'next/link';
 
 const groups = [
     {
         title: 'Python Gupshup',
+        slug: 'python-gupshup',
         description: 'Discuss everything from web development with Django and Flask to data science with Pandas and NumPy.',
         icon: <Bot className="h-10 w-10 text-primary" />,
     },
     {
         title: 'Java Gupshup',
+        slug: 'java-gupshup',
         description: 'For the Spring framework aficionados, Android developers, and enterprise-level application builders.',
         icon: <Coffee className="h-10 w-10 text-primary" />,
     },
     {
         title: 'JavaScript Gupshup',
+        slug: 'javascript-gupshup',
         description: 'A group for frontend wizards and backend masters. Talk about React, Node.js, Vue, and the latest in the JS ecosystem.',
         icon: <Code className="h-10 w-10 text-primary" />,
     },
     {
         title: 'C++ Gupshup',
+        slug: 'c-plus-plus-gupshup',
         description: 'Dive deep into systems programming, game development, and high-performance computing with C++.',
         icon: <Component className="h-10 w-10 text-primary" />,
     }
@@ -55,7 +60,9 @@ export default function GupshupPage() {
                         </p>
                     </CardContent>
                     <CardFooter className="justify-center">
-                        <Button className="w-full md:w-auto">Join the Gupshup</Button>
+                        <Link href={`/gupshup/${group.slug}`} className="w-full md:w-auto">
+                            <Button className="w-full">Join the Gupshup</Button>
+                        </Link>
                     </CardFooter>
                 </Card>
             ))}
