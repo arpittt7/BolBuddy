@@ -4,7 +4,7 @@ import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Users, Download, Award, HelpCircle, Video, Info } from 'lucide-react';
+import { Users, Download, Award, HelpCircle, Video, Rocket, Mic } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -162,18 +162,37 @@ export default function Home() {
                 </Card>
             </div>
         <div className="w-full container mx-auto">
-             <Card className="w-full shadow-xl overflow-hidden">
-                <div className="grid md:grid-cols-3 items-center">
-                    <div className="p-8 flex justify-center items-center bg-primary/10 md:col-span-1 h-full">
-                        <Info className="h-24 w-24 text-primary" />
+             <Card className="w-full shadow-xl text-center p-8 md:p-12">
+                <CardTitle className="text-4xl font-headline">{t('home.about.title')}</CardTitle>
+                <CardDescription className="max-w-3xl mx-auto text-lg mt-4 text-foreground/80">
+                    {t('home.about.description')}
+                </CardDescription>
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="bg-primary/10 text-primary p-4 rounded-full">
+                            <Rocket className="h-8 w-8" />
+                        </div>
+                        <h3 className="text-xl font-semibold">{t('home.about.features.growth.title')}</h3>
+                        <p className="text-muted-foreground">{t('home.about.features.growth.description')}</p>
                     </div>
-                    <div className="p-8 md:col-span-2">
-                        <CardTitle className="text-3xl font-headline">{t('home.about.title')}</CardTitle>
-                        <p className="text-lg text-foreground/80 mt-4">
-                            {t('home.about.description')}
-                        </p>
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="bg-primary/10 text-primary p-4 rounded-full">
+                            <Award className="h-8 w-8" />
+                        </div>
+                        <h3 className="text-xl font-semibold">{t('home.about.features.opportunities.title')}</h3>
+                        <p className="text-muted-foreground">{t('home.about.features.opportunities.description')}</p>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="bg-primary/10 text-primary p-4 rounded-full">
+                            <Mic className="h-8 w-8" />
+                        </div>
+                        <h3 className="text-xl font-semibold">{t('home.about.features.mentorship.title')}</h3>
+                        <p className="text-muted-foreground">{t('home.about.features.mentorship.description')}</p>
                     </div>
                 </div>
+                 <p className="mt-10 text-xl font-medium text-foreground">
+                    {t('home.about.mission')}
+                </p>
             </Card>
         </div>
       </main>
