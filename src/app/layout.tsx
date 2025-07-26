@@ -20,10 +20,14 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
       <body className="antialiased">
-        <AuthProvider>
-            {children}
-            <Toaster />
-        </AuthProvider>
+        <div className="stars"></div>
+        <div className="twinkling"></div>
+        <div className="relative z-10">
+            <AuthProvider>
+                {children}
+                <Toaster />
+            </AuthProvider>
+        </div>
       </body>
     </html>
   );
