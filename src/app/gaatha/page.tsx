@@ -1,12 +1,15 @@
 
+'use client';
+
 import { SiteHeader } from '@/components/site-header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Award, Briefcase } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { useSearchParams } from 'next/navigation';
+import { useLanguage } from '@/hooks/use-language';
+import { Headphones, BookOpen } from 'lucide-react';
 
 const courses = [
     {
@@ -53,6 +56,10 @@ const courses = [
 ]
 
 export default function GaathaPage() {
+  const searchParams = useSearchParams();
+  const defaultTab = searchParams.get('tab') || 'gaatha';
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
@@ -60,38 +67,54 @@ export default function GaathaPage() {
         <div className="w-full container mx-auto">
             <Card className="w-full text-center bg-transparent border-0 shadow-none py-8 md:py-12">
                 <h1 className="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-foreground">
-                    Audio Badges + Gaatha
+                   {t('gaatha.title')}
                 </h1>
                 <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-foreground/80">
-                    Motivational progress stories in audio form
+                    {t('gaatha.subtitle')}
                 </p>
             </Card>
 
             <div className="mt-8 w-full flex justify-center">
-                 <Tabs defaultValue="gaatha" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="audio">Audio</TabsTrigger>
-                        <TabsTrigger value="gaatha">Gaatha</TabsTrigger>
+                 <Tabs defaultValue={defaultTab} className="w-full">
+                    <TabsList className="grid w-full grid-cols-3">
+                        <TabsTrigger value="gaatha">{t('gaatha.tabs.gaatha.title')}</TabsTrigger>
+                        <TabsTrigger value="shruti">{t('gaatha.tabs.shruti.title')}</TabsTrigger>
+                        <TabsTrigger value="resources">{t('gaatha.tabs.resources.title')}</TabsTrigger>
                     </TabsList>
-                    <TabsContent value="audio">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Audio Badges</CardTitle>
-                                <CardDescription>
-                                    Listen to your earned audio badges. Coming soon!
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-2">
-                                <p>This feature is under development.</p>
-                            </CardContent>
-                        </Card>
-                    </TabsContent>
                     <TabsContent value="gaatha">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Free Mentorship Platforms</CardTitle>
+                                <CardTitle>{t('gaatha.tabs.gaatha.cardTitle')}</CardTitle>
                                 <CardDescription>
-                                   Explore our collection of free courses and mentorship platforms to help you grow.
+                                    {t('gaatha.tabs.gaatha.cardDescription')}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-2 flex flex-col items-center justify-center min-h-[200px]">
+                                <Headphones className="h-16 w-16 text-primary/50" />
+                                <p className="text-muted-foreground">{t('gaatha.tabs.gaatha.comingSoon')}</p>
+                            </CardContent>
+                        </Card>
+                    </TabsContent>
+                    <TabsContent value="shruti">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>{t('gaatha.tabs.shruti.cardTitle')}</CardTitle>
+                                <CardDescription>
+                                    {t('gaatha.tabs.shruti.cardDescription')}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-2 flex flex-col items-center justify-center min-h-[200px]">
+                                <BookOpen className="h-16 w-16 text-primary/50" />
+                                <p className="text-muted-foreground">{t('gaatha.tabs.shruti.comingSoon')}</p>
+                            </CardContent>
+                        </Card>
+                    </TabsContent>
+                    <TabsContent value="resources">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>{t('gaatha.tabs.resources.cardTitle')}</CardTitle>
+                                <CardDescription>
+                                   {t('gaatha.tabs.resources.cardDescription')}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

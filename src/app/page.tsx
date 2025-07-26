@@ -87,7 +87,7 @@ export default function Home() {
                     </p>
                 </CardContent>
                 <CardFooter className="justify-center">
-                    <Link href="/gaatha">
+                    <Link href="/gaatha?tab=shruti">
                         <Button>{t('home.features.shruti.button')}</Button>
                     </Link>
                 </CardFooter>

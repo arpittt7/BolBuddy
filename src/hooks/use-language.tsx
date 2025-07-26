@@ -189,6 +189,29 @@ const translations = {
             title: 'Registration Successful!',
             description: 'You have been registered for the session on {{topic}}.'
         }
+    },
+    gaatha: {
+        title: "Learning & Motivation Hub",
+        subtitle: "Explore motivational stories, educational audio, and helpful resources.",
+        tabs: {
+            gaatha: {
+                title: "Gaatha",
+                cardTitle: "Motivational Audio Badges",
+                cardDescription: "Listen to your earned audio badges. Stay inspired on your journey!",
+                comingSoon: "Coming soon! Keep learning to earn badges."
+            },
+            shruti: {
+                title: "Shruti",
+                cardTitle: "Educational Audio Lessons",
+                cardDescription: "Access educational content in audio format. Perfect for offline learning.",
+                comingSoon: "Educational audio lessons are on the way. Check back soon!"
+            },
+            resources: {
+                title: "Resources",
+                cardTitle: "Free Mentorship Platforms",
+                cardDescription: "Explore our collection of free courses and mentorship platforms to help you grow."
+            }
+        }
     }
   },
   hi: {
@@ -371,6 +394,29 @@ const translations = {
         toast: {
             title: 'पंजीकरण सफल!',
             description: 'आपने {{topic}} पर सत्र के लिए पंजीकरण कर लिया है।'
+        }
+    },
+    gaatha: {
+        title: "सीखने और प्रेरणा का केंद्र",
+        subtitle: "प्रेरक कहानियों, शैक्षिक ऑडियो और सहायक संसाधनों का अन्वेषण करें।",
+        tabs: {
+            gaatha: {
+                title: "गाथा",
+                cardTitle: "प्रेरक ऑडियो बैज",
+                cardDescription: "अपने अर्जित ऑडियो बैज सुनें। अपनी यात्रा पर प्रेरित रहें!",
+                comingSoon: "जल्द आ रहा है! बैज अर्जित करने के लिए सीखते रहें।"
+            },
+            shruti: {
+                title: "श्रुति",
+                cardTitle: "शैक्षिक ऑडियो पाठ",
+                cardDescription: "ऑडियो प्रारूप में शैक्षिक सामग्री तक पहुँचें। ऑफ़लाइन सीखने के लिए बिल्कुल सही।",
+                comingSoon: "शैक्षिक ऑडियो पाठ जल्द ही आ रहे हैं। जल्द ही वापस देखें!"
+            },
+            resources: {
+                title: "संसाधन",
+                cardTitle: "मुफ्त मेंटरशिप प्लेटफॉर्म",
+                cardDescription: "आपको बढ़ने में मदद करने के लिए हमारे मुफ्त पाठ्यक्रमों और मेंटरशिप प्लेटफॉर्म के संग्रह का अन्वेषण करें।"
+            }
         }
     }
   },
@@ -555,6 +601,29 @@ const translations = {
             title: 'నమోదు విజయవంతమైంది!',
             description: 'మీరు {{topic}}పై సెషన్ కోసం నమోదు చేయబడ్డారు.'
         }
+    },
+    gaatha: {
+        title: "అభ్యాస మరియు ప్రేరణ కేంద్రం",
+        subtitle: "ప్రేరణాత్మక కథలు, విద్యా ఆడియో మరియు సహాయక వనరులను అన్వేషించండి.",
+        tabs: {
+            gaatha: {
+                title: "గాథ",
+                cardTitle: "ప్రేరణాత్మక ఆడియో బ్యాడ్జ్‌లు",
+                cardDescription: "మీరు సంపాదించిన ఆడియో బ్యాడ్జ్‌లను వినండి. మీ ప్రయాణంలో ప్రేరణ పొందండి!",
+                comingSoon: "త్వరలో వస్తుంది! బ్యాడ్జ్‌లు సంపాదించడానికి నేర్చుకుంటూ ఉండండి."
+            },
+            shruti: {
+                title: "శ్రుతి",
+                cardTitle: "విద్యా ఆడియో పాఠాలు",
+                cardDescription: "ఆడియో ఆకృతిలో విద్యా విషయాలను యాక్సెస్ చేయండి. ఆఫ్‌లైన్ అభ్యాసానికి సరైనది.",
+                comingSoon: "విద్యా ఆడియో పాఠాలు రాబోతున్నాయి. త్వరలో తనిఖీ చేయండి!"
+            },
+            resources: {
+                title: "వనరులు",
+                cardTitle: "ఉచిత మార్గదర్శక వేదికలు",
+                cardDescription: "మీరు ఎదగడానికి సహాయపడటానికి మా ఉచిత కోర్సులు మరియు మార్గదర్శక వేదికల సేకరణను అన్వేషించండి."
+            }
+        }
     }
   },
   ta: {
@@ -738,6 +807,29 @@ const translations = {
             title: 'பதிவு విజయవంతమైంది!',
             description: '{{topic}} பற்றிய அமர்வுக்கு நீங்கள் பதிவு செய்யப்பட்டுள்ளீர்கள்.'
         }
+    },
+    gaatha: {
+        title: "கற்றல் மற்றும் ஊக்க மையம்",
+        subtitle: "ஊக்கமளிக்கும் கதைகள், கல்வி ஆடியோ மற்றும் பயனுள்ள ஆதாரங்களை ஆராயுங்கள்.",
+        tabs: {
+            gaatha: {
+                title: "காதா",
+                cardTitle: "ஊக்கமளிக்கும் ஆடியோ பேட்ஜ்கள்",
+                cardDescription: "நீங்கள் சம்பாதித்த ஆடியோ பேட்ஜ்களைக் கேளுங்கள். உங்கள் பயணத்தில் ஊக்கத்துடன் இருங்கள்!",
+                comingSoon: "விரைவில் வருகிறது! பேட்ஜ்களைப் பெற தொடர்ந்து கற்றுக்கொள்ளுங்கள்."
+            },
+            shruti: {
+                title: "ஸ்ருதி",
+                cardTitle: "கல்வி ஆடியோ பாடங்கள்",
+                cardDescription: "ஆடியோ வடிவத்தில் கல்வி உள்ளடக்கத்தை அணுகவும். ஆஃப்லைன் கற்றலுக்கு ஏற்றது.",
+                comingSoon: "கல்வி ஆடியோ பாடங்கள் விரைவில் வருகின்றன. விரைவில் மீண்டும் பாருங்கள்!"
+            },
+            resources: {
+                title: "ஆதாரங்கள்",
+                cardTitle: "இலவச வழிகாட்டி தளங்கள்",
+                cardDescription: "நீங்கள் வளர உதவும் எங்கள் இலவச படிப்புகள் மற்றும் வழிகாட்டி தளங்களின் தொகுப்பை ஆராயுங்கள்."
+            }
+        }
     }
   },
   mr: {
@@ -920,6 +1012,29 @@ const translations = {
         toast: {
             title: 'नोंदणी यशस्वी!',
             description: 'तुम्ही {{topic}} वरील सत्रासाठी नोंदणी केली आहे.'
+        }
+    },
+    gaatha: {
+        title: "शिक्षण आणि प्रेरणा केंद्र",
+        subtitle: "प्रेरणादायी कथा, शैक्षणिक ऑडिओ आणि उपयुक्त संसाधने एक्सप्लोर करा.",
+        tabs: {
+            gaatha: {
+                title: "गाथा",
+                cardTitle: "प्रेरक ऑडिओ बॅज",
+                cardDescription: "तुमचे मिळवलेले ऑडिओ बॅज ऐका. तुमच्या प्रवासात प्रेरित रहा!",
+                comingSoon: "लवकरच येत आहे! बॅज मिळवण्यासाठी शिकत रहा."
+            },
+            shruti: {
+                title: "श्रुती",
+                cardTitle: "शैक्षणिक ऑडिओ पाठ",
+                cardDescription: "ऑडिओ स्वरूपात शैक्षणिक सामग्रीमध्ये प्रवेश करा. ऑफलाइन शिक्षणासाठी योग्य.",
+                comingSoon: "शैक्षणिक ऑडिओ पाठ लवकरच येत आहेत. लवकरच परत तपासा!"
+            },
+            resources: {
+                title: " संसाधने",
+                cardTitle: "विनामूल्य मार्गदर्शन प्लॅटफॉर्म",
+                cardDescription: "तुम्हाला वाढण्यास मदत करण्यासाठी आमचे विनामूल्य अभ्यासक्रम आणि मार्गदर्शन प्लॅटफॉर्मचे संकलन एक्सप्लोर करा."
+            }
         }
     }
   },
