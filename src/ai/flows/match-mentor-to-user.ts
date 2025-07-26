@@ -1,9 +1,9 @@
 'use server';
 
 /**
- * @fileOverview Matches a user's goals with a suitable mentor using AI.
+ * @fileOverview Matches a user's goals with suitable mentors using AI.
  *
- * - matchMentor: A function that recommends a mentor based on user goals.
+ * - matchMentor: A function that recommends mentors based on user goals.
  * - MatchMentorInput: The input type for the matchMentor function.
  * - MatchMentorOutput: The return type for the matchMentor function.
  */
@@ -26,9 +26,13 @@ const MentorSchema = z.object({
   bio: z.string().describe('A short biography of the mentor.'),
 });
 
+const MentorWithReasonSchema = z.object({
+    mentor: MentorSchema,
+    reason: z.string().describe('The reasoning behind this specific mentor recommendation.')
+})
+
 const MatchMentorOutputSchema = z.object({
-  mentor: MentorSchema.describe('The recommended mentor for the user.'),
-  reason: z.string().describe('The reasoning behind the mentor recommendation.'),
+  mentors: z.array(MentorWithReasonSchema).describe('A list of up to 4 recommended mentors for the user.'),
   announcement: z.string().describe('The full text of the announcement to be spoken to the user.')
 });
 export type MatchMentorOutput = z.infer<typeof MatchMentorOutputSchema>;
@@ -45,7 +49,7 @@ const prompt = ai.definePrompt({
     language: z.string().optional(),
   })},
   output: {schema: MatchMentorOutputSchema},
-  prompt: `You are an AI mentor matching service called BolBot. Given the user's goals, recommend the best possible mentor from the following list.
+  prompt: `You are an AI mentor matching service called BolBot. Given the user's goals, recommend the 4 best possible mentors from the following list.
 
 You MUST respond in the same language as the user's goals. The language is specified in the 'language' field.
 
@@ -60,10 +64,11 @@ Bio: {{this.bio}}
 ID: {{this.mentorId}}
 {{/each}}
 
-Based on the user's goals, analyze the list of mentors and select the one whose expertise is the most relevant. Return a JSON object with the following fields:
-- 'mentor': The full information of the best-matched mentor (including mentorId, name, expertise, and bio).
-- 'reason': a short explanation of why this mentor is a good match for the user.
-- 'announcement': a friendly announcement to the user, in their language, that a match has been found, including the reason. For example: "I found a match for you. Based on your goals, I recommend [Mentor Name] because [Reason]."
+Based on the user's goals, analyze the list of mentors and select the four whose expertise is the most relevant. Return a JSON object with the following fields:
+- 'mentors': An array of 4 objects, where each object contains:
+    - 'mentor': The full information of the best-matched mentor (including mentorId, name, expertise, and bio).
+    - 'reason': a short explanation of why this mentor is a good match for the user.
+- 'announcement': a friendly announcement to the user, in their language, that matches have been found. For example: "I found a few great mentors for you. Take a look at these recommendations."
 `,
 });
 

@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { MentorCard } from './mentor-card';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 
 const FormSchema = z.object({
   userGoals: z.string().min(10, {
@@ -202,8 +203,21 @@ export function BolBuddy() {
 
       {result && !isLoading && (
         <div className="animate-in fade-in-50 duration-500">
-            <h2 className="font-headline text-3xl text-center mb-4">We found a match!</h2>
-            <MentorCard mentor={result.mentor} reason={result.reason} />
+            <h2 className="font-headline text-3xl text-center mb-4">{result.announcement}</h2>
+            <Carousel className="w-full max-w-xl mx-auto" opts={{
+                align: "start",
+                loop: true,
+            }}>
+                <CarouselContent>
+                    {result.mentors.map(({ mentor, reason }, index) => (
+                    <CarouselItem key={index} className="md:basis-1/1 p-4">
+                       <MentorCard mentor={mentor} reason={reason} />
+                    </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
         </div>
       )}
     </div>

@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, PlayCircle, User, Mail } from "lucide-react";
 import Link from "next/link";
 
-type Mentor = MatchMentorOutput['mentor'];
+type Mentor = MatchMentorOutput['mentors'][number]['mentor'];
 
 interface MentorCardProps {
   mentor: Mentor;
@@ -53,7 +53,7 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
 
 
   return (
-    <Card className="w-full transform transition-all duration-300 ease-in-out hover:shadow-2xl shadow-xl">
+    <Card className="w-full h-full flex flex-col transform transition-all duration-300 ease-in-out hover:shadow-2xl shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar className="h-16 w-16">
           <AvatarImage src={`https://placehold.co/128x128.png`} alt={mentor.name} data-ai-hint="profile picture" />
@@ -66,13 +66,13 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
           <CardDescription className="text-base">{mentor.expertise}</CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 flex-grow">
         <div>
           <h3 className="font-semibold text-lg mb-1 font-headline">About {mentor.name}</h3>
           <p className="text-muted-foreground">{mentor.bio}</p>
         </div>
         <div>
-          <h3 className="font-semibold text-lg mb-1 font-headline">Why I matched you</h3>
+          <h3 className="font-semibold text-lg mb-1 font-headline">Why we matched you</h3>
           <p className="text-muted-foreground">{reason}</p>
         </div>
       </CardContent>
