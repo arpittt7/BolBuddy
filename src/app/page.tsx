@@ -162,20 +162,18 @@ export default function Home() {
                 </Card>
             </div>
         <div className="w-full container mx-auto">
-            <Card className="w-full shadow-xl">
-                <CardHeader className="flex flex-row items-center gap-4 p-6">
-                    <div className="bg-primary/10 text-primary p-3 rounded-full w-fit">
-                        <Info className="h-8 w-8" />
+             <Card className="w-full shadow-xl overflow-hidden">
+                <div className="grid md:grid-cols-3 items-center">
+                    <div className="p-8 flex justify-center items-center bg-primary/10 md:col-span-1 h-full">
+                        <Info className="h-24 w-24 text-primary" />
                     </div>
-                    <div>
+                    <div className="p-8 md:col-span-2">
                         <CardTitle className="text-3xl font-headline">{t('home.about.title')}</CardTitle>
+                        <p className="text-lg text-foreground/80 mt-4">
+                            {t('home.about.description')}
+                        </p>
                     </div>
-                </CardHeader>
-                <CardContent className="p-6 pt-0">
-                    <p className="text-lg text-foreground/80">
-                        {t('home.about.description')}
-                    </p>
-                </CardContent>
+                </div>
             </Card>
         </div>
       </main>
