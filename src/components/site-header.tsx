@@ -1,6 +1,6 @@
 
 'use client';
-import { Mic, Menu, LogOut } from 'lucide-react';
+import { Mic, Menu, LogOut, HelpCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
@@ -39,7 +39,10 @@ export function SiteHeader() {
           <div className="flex items-center gap-4">
              <div className="hidden md:flex items-center gap-4">
                  <Link href="/whisper-ask">
-                    <Button variant="ghost">WhisperAsk</Button>
+                    <Button variant="ghost">
+                        <HelpCircle className="mr-2 h-4 w-4" />
+                        WhisperAsk
+                    </Button>
                  </Link>
                 {user ? (
                     <>
