@@ -40,7 +40,9 @@ export default function Home() {
                     </p>
                 </CardContent>
                  <CardFooter className="justify-center">
-                    <Button>Join a Group</Button>
+                    <Link href="/gupshup">
+                        <Button>Join a Group</Button>
+                    </Link>
                 </CardFooter>
             </Card>
             <Card className="w-full shadow-xl flex flex-col">
