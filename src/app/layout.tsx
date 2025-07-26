@@ -21,15 +21,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <AuthProvider>
-            <div className="wavy-background">
-              <div className="wave wave1"></div>
-              <div className="wave wave2"></div>
-              <div className="wave wave3"></div>
-              <div className="wave wave4"></div>
-            </div>
-            <div className="relative z-10">
-                {children}
-            </div>
+            {children}
             <Toaster />
         </AuthProvider>
       </body>
