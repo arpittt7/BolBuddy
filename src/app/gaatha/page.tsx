@@ -5,6 +5,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Award, Briefcase } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const courses = [
     {
@@ -119,6 +121,30 @@ export default function GaathaPage() {
                         </Card>
                     </TabsContent>
                 </Tabs>
+            </div>
+            <div className="mt-12 w-full">
+                <Card className="w-full shadow-xl">
+                    <CardHeader className="flex flex-row items-center gap-4">
+                        <div className="mx-auto md:mx-0 bg-primary/10 text-primary p-3 rounded-full w-fit">
+                            <Briefcase className="h-8 w-8" />
+                        </div>
+                        <div className="flex-1 text-center md:text-left">
+                            <CardTitle className="text-3xl font-headline">Scholarship / Internship Alerts</CardTitle>
+                            <CardDescription className="text-lg mt-1">
+                                Stay updated on the latest opportunities.
+                            </CardDescription>
+                        </div>
+                    </CardHeader>
+                    <CardContent>
+                       <Alert>
+                            <Award className="h-4 w-4"/>
+                            <AlertTitle>No Active Alerts</AlertTitle>
+                            <AlertDescription>
+                                There are no active scholarships or internships at this time. Please check back later!
+                            </AlertDescription>
+                       </Alert>
+                    </CardContent>
+                </Card>
             </div>
         </div>
       </main>
