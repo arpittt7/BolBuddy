@@ -163,6 +163,32 @@ const translations = {
             alertTitle: 'Call Scheduled!',
             alertDescription: 'Your weekly call has been booked. You will receive a confirmation email shortly.'
         }
+    },
+    liveSessions: {
+        title: 'Upcoming Live Sessions',
+        description: 'Join our live sessions with industry experts to learn new skills and get your questions answered.',
+        card: {
+            live: 'LIVE',
+            register: 'Register Now'
+        },
+        sessions: {
+            session1: {
+                topic: 'Introduction to Web Development',
+                tags: ['HTML', 'CSS']
+            },
+            session2: {
+                topic: 'Getting Started with Data Science',
+                tags: ['Python', 'Pandas']
+            },
+            session3: {
+                topic: 'UI/UX Design Principles',
+                tags: ['Figma', 'Prototyping']
+            }
+        },
+        toast: {
+            title: 'Registration Successful!',
+            description: 'You have been registered for the session on {{topic}}.'
+        }
     }
   },
   hi: {
@@ -319,6 +345,32 @@ const translations = {
             description: '{{name}} के साथ आपकी कॉल निर्धारित हो गई है।',
             alertTitle: 'कॉल निर्धारित!',
             alertDescription: 'आपकी साप्ताहिक कॉल बुक हो गई है। आपको शीघ्र ही एक पुष्टिकरण ईमेल प्राप्त होगा।'
+        }
+    },
+    liveSessions: {
+        title: 'आगामी लाइव सत्र',
+        description: 'नए कौशल सीखने और अपने प्रश्नों के उत्तर पाने के लिए उद्योग विशेषज्ञों के साथ हमारे लाइव सत्रों में शामिल हों।',
+        card: {
+            live: 'लाइव',
+            register: 'अभी पंजीकरण करें'
+        },
+        sessions: {
+            session1: {
+                topic: 'वेब डेवलपमेंट का परिचय',
+                tags: ['एचटीएमएल', 'सीएसएस']
+            },
+            session2: {
+                topic: 'डेटा साइंस के साथ शुरुआत',
+                tags: ['पायथन', 'पांडा']
+            },
+            session3: {
+                topic: 'यूआई/यूएक्स डिजाइन सिद्धांत',
+                tags: ['फिग्मा', 'प्रोटोटाइपिंग']
+            }
+        },
+        toast: {
+            title: 'पंजीकरण सफल!',
+            description: 'आपने {{topic}} पर सत्र के लिए पंजीकरण कर लिया है।'
         }
     }
   },
@@ -477,6 +529,32 @@ const translations = {
             alertTitle: 'కాల్ షెడ్యూల్ చేయబడింది!',
             alertDescription: 'మీ వారపు కాల్ బుక్ చేయబడింది. మీకు త్వరలో నిర్ధారణ ఇమెయిల్ వస్తుంది.'
         }
+    },
+    liveSessions: {
+        title: 'రాబోయే ప్రత్యక్ష ప్రసార సెషన్‌లు',
+        description: 'కొత్త నైపుణ్యాలను నేర్చుకోవడానికి మరియు మీ ప్రశ్నలకు సమాధానాలు పొందడానికి పరిశ్రమ నిపుణులతో మా ప్రత్యక్ష ప్రసార సెషన్‌లలో చేరండి.',
+        card: {
+            live: 'ప్రత్యక్ష ప్రసారం',
+            register: 'ఇప్పుడే నమోదు చేసుకోండి'
+        },
+        sessions: {
+            session1: {
+                topic: 'వెబ్ డెవలప్‌మెంట్ పరిచయం',
+                tags: ['HTML', 'CSS']
+            },
+            session2: {
+                topic: 'డేటా సైన్స్‌తో ప్రారంభించడం',
+                tags: ['పైథాన్', 'పాండాస్']
+            },
+            session3: {
+                topic: 'UI/UX డిజైన్ సూత్రాలు',
+                tags: ['ఫిగ్మా', 'ప్రోటోటైపింగ్']
+            }
+        },
+        toast: {
+            title: 'నమోదు విజయవంతమైంది!',
+            description: 'మీరు {{topic}}పై సెషన్ కోసం నమోదు చేయబడ్డారు.'
+        }
     }
   },
   ta: {
@@ -633,6 +711,32 @@ const translations = {
             description: '{{name}} உடன் உங்கள் அழைப்பு திட்டமிடப்பட்டுள்ளது.',
             alertTitle: 'அழைப்பு திட்டமிடப்பட்டது!',
             alertDescription: 'உங்கள் வாராந்திர அழைப்பு பதிவு செய்யப்பட்டுள்ளது. நீங்கள் விரைவில் ஒரு உறுதிப்படுத்தல் மின்னஞ்சலைப் பெறுவீர்கள்.'
+        }
+    },
+    liveSessions: {
+        title: 'வரவிருக்கும் நேரடி அமர்வுகள்',
+        description: 'புதிய திறன்களைக் கற்றுக்கொள்ளவும், உங்கள் கேள்விகளுக்கு பதிலளிக்கவும் தொழில் நிபுணர்களுடன் எங்கள் நேரடி அமர்வுகளில் சேரவும்.',
+        card: {
+            live: 'நேரலை',
+            register: 'இப்போது பதிவு செய்யவும்'
+        },
+        sessions: {
+            session1: {
+                topic: 'இணைய மேம்பாட்டு அறிமுகம்',
+                tags: ['HTML', 'CSS']
+            },
+            session2: {
+                topic: 'தரவு அறிவியலுடன் தொடங்குதல்',
+                tags: ['பைதான்', 'பாண்டாஸ்']
+            },
+            session3: {
+                topic: 'UI/UX வடிவமைப்பு கோட்பாடுகள்',
+                tags: ['ஃபிக்மா', 'முன்மாதிரி']
+            }
+        },
+        toast: {
+            title: 'பதிவு విజయవంతమైంది!',
+            description: '{{topic}} பற்றிய அமர்வுக்கு நீங்கள் பதிவு செய்யப்பட்டுள்ளீர்கள்.'
         }
     }
   },
@@ -792,6 +896,32 @@ const translations = {
         alertDescription: 'तुमचा साप्ताहिक कॉल बुक झाला आहे. तुम्हाला लवकरच एक पुष्टीकरण ईमेल मिळेल.',
       },
     },
+    liveSessions: {
+        title: 'आगामी थेट सत्रे',
+        description: 'नवीन कौशल्ये शिकण्यासाठी आणि आपल्या प्रश्नांची उत्तरे मिळविण्यासाठी उद्योग तज्ञांसह आमच्या थेट सत्रांमध्ये सामील व्हा.',
+        card: {
+            live: 'थेट',
+            register: 'आता नोंदणी करा'
+        },
+        sessions: {
+            session1: {
+                topic: 'वेब डेव्हलपमेंटचा परिचय',
+                tags: ['एचटीएमएल', 'सीएसएस']
+            },
+            session2: {
+                topic: 'डेटा सायन्ससह प्रारंभ करणे',
+                tags: ['पायथन', 'पांडा']
+            },
+            session3: {
+                topic: 'यूआय/यूएक्स डिझाइनची तत्त्वे',
+                tags: ['फिग्मा', 'प्रोटोटाइपिंग']
+            }
+        },
+        toast: {
+            title: 'नोंदणी यशस्वी!',
+            description: 'तुम्ही {{topic}} वरील सत्रासाठी नोंदणी केली आहे.'
+        }
+    }
   },
 };
 

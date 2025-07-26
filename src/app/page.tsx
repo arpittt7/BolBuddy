@@ -106,7 +106,9 @@ export default function Home() {
                     </p>
                 </CardContent>
                 <CardFooter className="justify-center">
-                    <Button>{t('home.features.live.button')}</Button>
+                    <Link href="/live-sessions">
+                        <Button>{t('home.features.live.button')}</Button>
+                    </Link>
                 </CardFooter>
             </Card>
         </div>
