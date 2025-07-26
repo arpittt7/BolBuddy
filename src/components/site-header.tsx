@@ -1,16 +1,21 @@
 
 'use client';
-import { Mic, Menu, LogOut, UserPlus, HelpCircle, Quote } from 'lucide-react';
+import { Mic, Menu, LogOut, UserPlus, Globe, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
 import { auth } from '@/lib/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function SiteHeader() {
   const { user } = useAuth();
   const navLinks = [
-    { name: 'Features', href: '#' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
@@ -29,6 +34,21 @@ export function SiteHeader() {
               <span className="text-2xl font-bold text-foreground">BolBuddy</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
+               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+                    <Globe className="h-4 w-4 mr-2" />
+                    Language
+                    <ChevronDown className="h-4 w-4 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>English</DropdownMenuItem>
+                  <DropdownMenuItem>हिन्दी</DropdownMenuItem>
+                  <DropdownMenuItem>తెలుగు</DropdownMenuItem>
+                  <DropdownMenuItem>தமிழ்</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.href} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
                   {link.name}
