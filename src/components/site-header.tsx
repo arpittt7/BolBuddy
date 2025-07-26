@@ -45,6 +45,7 @@ export function SiteHeader() {
                   <DropdownMenuItem onSelect={() => setLanguage('hi')}>हिन्दी</DropdownMenuItem>
                   <DropdownMenuItem onSelect={() => setLanguage('te')}>తెలుగు</DropdownMenuItem>
                   <DropdownMenuItem onSelect={() => setLanguage('ta')}>தமிழ்</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setLanguage('mr')}>मराठी</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </nav>
