@@ -139,7 +139,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
           <AlertTitle className="font-headline">Shabash! Aapka mentor ab aapke sath hai.</AlertTitle>
         </Alert>
         <Avatar className="h-24 w-24 mx-auto mt-6">
-          <AvatarImage src={`https://placehold.co/128x128.png`} alt={mentor.name} data-ai-hint="profile picture" />
+          <AvatarImage src={`https://i.pravatar.cc/150?u=${mentor.mentorId}`} alt={mentor.name} />
           <AvatarFallback className="text-3xl">
             <User />
           </AvatarFallback>
