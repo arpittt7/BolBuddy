@@ -3,7 +3,7 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-type Language = 'en' | 'hi';
+type Language = 'en' | 'hi' | 'te' | 'ta';
 
 const translations = {
   en: {
@@ -76,22 +76,6 @@ const translations = {
             title: 'Voice Error',
             description: 'Could not recognize speech'
         }
-    },
-    about: {
-        title: 'ABOUT US',
-        imageAlt: 'About BolBuddy',
-        description: 'BolBuddy is an AI-powered mentorship platform designed to bridge the gap between aspirations and achievements for students across India. We connect learners with experienced mentors, provide peer-to-peer support through \'Gupshup\' groups, and offer a safe space to ask questions anonymously with \'WhisperAsk\'. Our goal is to make quality guidance accessible to everyone, everywhere.',
-        visionTitle: 'VISION',
-        visionText: 'To empower every student with the guidance, skills, and confidence they need to realize their full potential and succeed in their chosen career path.',
-        missionTitle: 'MISSION',
-        missionText: 'To build a collaborative and inclusive learning community where students are inspired to learn, create, and solve real-world problems through AI-driven mentorship and peer support.'
-    },
-    contact: {
-        title: 'Get In Touch',
-        description: 'We\'re here to help. Contact us with any questions or feedback.',
-        email: 'Email',
-        'Founder & Tech Lead': 'Founder & Tech Lead',
-        'Co-founder & AI Specialist': 'Co-founder & AI Specialist'
     },
     joinMentor: {
         title: 'Become a Mentor',
@@ -177,8 +161,6 @@ const translations = {
   },
   hi: {
     nav: {
-      about: 'हमारे बारे में',
-      contact: 'संपर्क',
       language: 'भाषा',
       joinAsMentor: 'मेंटर के रूप में जुड़ें',
       signIn: 'साइन इन करें',
@@ -245,22 +227,6 @@ const translations = {
             title: 'आवाज त्रुटि',
             description: 'भाषण को पहचाना नहीं जा सका'
         }
-    },
-     about: {
-        title: 'हमारे बारे में',
-        imageAlt: 'बोलबडी के बारे में',
-        description: 'बोलबडी एक AI-संचालित मेंटरशिप प्लेटफ़ॉर्म है जिसे पूरे भारत में छात्रों के लिए आकांक्षाओं और उपलब्धियों के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हम शिक्षार्थियों को अनुभवी मेंटर्स से जोड़ते हैं, \'गपशप\' समूहों के माध्यम से पीयर-टू-पीयर सहायता प्रदान करते हैं, और \'व्हिस्परआस्क\' के साथ गुमनाम रूप से प्रश्न पूछने के लिए एक सुरक्षित स्थान प्रदान करते हैं। हमारा लक्ष्य गुणवत्तापूर्ण मार्गदर्शन को हर किसी के लिए, हर जगह सुलभ बनाना है।',
-        visionTitle: 'दृष्टिकोण',
-        visionText: 'प्रत्येक छात्र को मार्गदर्शन, कौशल और आत्मविश्वास के साथ सशक्त बनाना ताकि वे अपनी पूरी क्षमता का एहसास कर सकें और अपने चुने हुए करियर पथ में सफल हो सकें।',
-        missionTitle: 'मिशन',
-        missionText: 'एक सहयोगी और समावेशी शिक्षण समुदाय का निर्माण करना जहाँ छात्रों को AI-संचालित मेंटरशिप और पीयर सपोर्ट के माध्यम से वास्तविक दुनिया की समस्याओं को सीखने, बनाने और हल करने के लिए प्रेरित किया जाता है।'
-    },
-    contact: {
-        title: 'संपर्क करें',
-        description: 'हम सहायता के लिए यहां हैं। किसी भी प्रश्न या प्रतिक्रिया के लिए हमसे संपर्क करें।',
-        email: 'ईमेल',
-        'Founder & Tech Lead': 'संस्थापक और तकनीकी प्रमुख',
-        'Co-founder & AI Specialist': 'सह-संस्थापक और AI विशेषज्ञ'
     },
     joinMentor: {
         title: 'एक मेंटर बनें',
@@ -344,6 +310,308 @@ const translations = {
         }
     }
   },
+  te: { // Telugu placeholders
+    nav: {
+      language: 'భాష',
+      joinAsMentor: 'Join as a Mentor',
+      signIn: 'Sign In',
+      signOut: 'Sign Out',
+    },
+    home: {
+        hero: {
+            title: 'Find Your Perfect Mentor',
+            subtitle: 'Use the power of AI to connect with mentors who can help you achieve your goals. Describe what you want to learn, and we\'ll find the right match for you.'
+        },
+        features: {
+            gupshup: {
+                title: 'Gupshup Gurukul',
+                subtitle: 'Peer voice groups for learning and motivation',
+                description: 'Connect with fellow learners in voice-based groups. Share your progress, ask questions, and stay motivated together on your journey.',
+                button: 'Join a Group'
+            },
+            whisper: {
+                title: 'WhisperAsk',
+                subtitle: 'Ask questions anonymously',
+                description: 'Have a question you\'re hesitant to ask? Use WhisperAsk to get answers from mentors anonymously and confidentially.',
+                button: 'Ask a Question'
+            },
+            shruti: {
+                title: 'Shruti Mode',
+                subtitle: 'Works offline via downloaded audio',
+                description: 'Access your learning materials anytime, anywhere, even without an internet connection. Download audio content and continue your progress offline.',
+                button: 'Learn More'
+            },
+            gaatha: {
+                title: 'Audio Badges + Gaatha',
+                subtitle: 'Motivational progress stories in audio form',
+                description: 'Earn badges as you learn and listen to inspiring stories from others who have achieved their goals. A unique way to track your progress and stay inspired.',
+                button: 'Listen Now'
+            }
+        }
+    },
+    bolbuddy: {
+      title: 'What are your goals?',
+      description: 'Tell us what you want to achieve. You can type or use your voice.',
+      form: {
+        label: 'Your Goals',
+        placeholder: 'e.g., \'I want to learn coding to get a job\' or \'I want to start my own business...\'',
+        startRecording: 'Start recording',
+        stopRecording: 'Stop recording',
+        button: {
+          default: 'Find My Mentor',
+          loading: 'Matching...'
+        }
+      },
+      loading: 'Finding the perfect mentor for you...',
+      toast: {
+        error: {
+            title: 'Failed to find a mentor'
+        }
+      }
+    },
+    voice: {
+        unsupported: {
+            title: 'Unsupported Browser',
+            description: 'Your browser does not support voice recording.'
+        },
+        error: {
+            title: 'Voice Error',
+            description: 'Could not recognize speech'
+        }
+    },
+    joinMentor: {
+        title: 'Become a Mentor',
+        description: 'Share your knowledge and guide the next generation of talent. Fill out the form below to join us.',
+        form: {
+            name: { label: 'Full Name' },
+            email: { label: 'Email Address' },
+            expertise: { label: 'Expertise / Skills', placeholder: 'e.g., Python, UI/UX Design, Public Speaking' },
+            bio: { label: 'Short Bio', placeholder: 'Tell us a little about yourself and your experience.' },
+            button: {
+                default: 'Apply to be a Mentor',
+                loading: 'Submitting Application...'
+            }
+        },
+        submitted: {
+            title: 'Thank You!',
+            description: 'Your application has been received. We will review it and get in touch with you shortly.'
+        },
+        toast: {
+            title: 'Application Submitted!',
+            description: 'Thank you for your interest in becoming a mentor.'
+        }
+    },
+    errors: {
+        "Name must be at least 2 characters.": "Name must be at least 2 characters.",
+        "Please enter a valid email.": "Please enter a valid email.",
+        "Please list your areas of expertise (at least 10 characters).": "Please list your areas of expertise (at least 10 characters).",
+        "Bio must be at least 20 characters.": "Bio must be at least 20 characters.",
+        "Name is required": "Name is required",
+        "Please select a date": "Please select a date",
+        "Please tell us a bit more about your goals (at least 10 characters).": "Please tell us a bit more about your goals (at least 10 characters).",
+    },
+    mentorCard: {
+        about: 'About {{name}}',
+        reason: 'Why we matched you',
+        listen: 'Listen to Intro',
+        generating: 'Generating...',
+        connect: 'Connect',
+        bookCall: 'Book a Voice Call'
+    },
+    mentorConnect: {
+        greeting: 'Shabash! Aapka mentor ab aapke sath hai.',
+        tabs: {
+            voiceMessage: {
+                title: 'Send Voice Message',
+                description: 'Record a message for your mentor. Ask a question or share an update.',
+                placeholder: 'Your recorded message will appear here...',
+                button: 'Send Message'
+            },
+            bookCall: {
+                title: 'Book Weekly Call',
+                description: 'Schedule a one-on-one call with {{name}}.',
+                form: {
+                    name: { label: 'Your Name' },
+                    date: { label: 'Preferred Date' },
+                    notes: { label: 'Notes (Optional)', placeholder: 'Anything specific you want to discuss?' },
+                    button: 'Book Call'
+                }
+            },
+            lessons: {
+                title: 'Audio Lessons',
+                description: 'Listen to lessons from {{name}}.',
+                lesson1: { title: 'Lesson 1: Introduction to {{expertise}}' },
+                lesson2: { title: 'Lesson 2: Core Concepts' },
+                offline: {
+                    title: 'Offline Access',
+                    description: 'Download lessons to listen anywhere, even without an internet connection.'
+                }
+            }
+        },
+        messageSent: {
+            title: 'Message Sent!',
+            description: 'Your voice message has been sent to your mentor.',
+            alertDescription: 'Your mentor will receive your message and respond soon.'
+        },
+        callBooked: {
+            title: 'Call Booked!',
+            description: 'Your call with {{name}} has been scheduled.',
+            alertTitle: 'Call Scheduled!',
+            alertDescription: 'Your weekly call has been booked. You will receive a confirmation email shortly.'
+        }
+    }
+  },
+  ta: { // Tamil placeholders
+    nav: {
+      language: 'மொழி',
+      joinAsMentor: 'Join as a Mentor',
+      signIn: 'Sign In',
+      signOut: 'Sign Out',
+    },
+    home: {
+        hero: {
+            title: 'Find Your Perfect Mentor',
+            subtitle: 'Use the power of AI to connect with mentors who can help you achieve your goals. Describe what you want to learn, and we\'ll find the right match for you.'
+        },
+        features: {
+            gupshup: {
+                title: 'Gupshup Gurukul',
+                subtitle: 'Peer voice groups for learning and motivation',
+                description: 'Connect with fellow learners in voice-based groups. Share your progress, ask questions, and stay motivated together on your journey.',
+                button: 'Join a Group'
+            },
+            whisper: {
+                title: 'WhisperAsk',
+                subtitle: 'Ask questions anonymously',
+                description: 'Have a question you\'re hesitant to ask? Use WhisperAsk to get answers from mentors anonymously and confidentially.',
+                button: 'Ask a Question'
+            },
+            shruti: {
+                title: 'Shruti Mode',
+                subtitle: 'Works offline via downloaded audio',
+                description: 'Access your learning materials anytime, anywhere, even without an internet connection. Download audio content and continue your progress offline.',
+                button: 'Learn More'
+            },
+            gaatha: {
+                title: 'Audio Badges + Gaatha',
+                subtitle: 'Motivational progress stories in audio form',
+                description: 'Earn badges as you learn and listen to inspiring stories from others who have achieved their goals. A unique way to track your progress and stay inspired.',
+                button: 'Listen Now'
+            }
+        }
+    },
+    bolbuddy: {
+      title: 'What are your goals?',
+      description: 'Tell us what you want to achieve. You can type or use your voice.',
+      form: {
+        label: 'Your Goals',
+        placeholder: 'e.g., \'I want to learn coding to get a job\' or \'I want to start my own business...\'',
+        startRecording: 'Start recording',
+        stopRecording: 'Stop recording',
+        button: {
+          default: 'Find My Mentor',
+          loading: 'Matching...'
+        }
+      },
+      loading: 'Finding the perfect mentor for you...',
+      toast: {
+        error: {
+            title: 'Failed to find a mentor'
+        }
+      }
+    },
+    voice: {
+        unsupported: {
+            title: 'Unsupported Browser',
+            description: 'Your browser does not support voice recording.'
+        },
+        error: {
+            title: 'Voice Error',
+            description: 'Could not recognize speech'
+        }
+    },
+    joinMentor: {
+        title: 'Become a Mentor',
+        description: 'Share your knowledge and guide the next generation of talent. Fill out the form below to join us.',
+        form: {
+            name: { label: 'Full Name' },
+            email: { label: 'Email Address' },
+            expertise: { label: 'Expertise / Skills', placeholder: 'e.g., Python, UI/UX Design, Public Speaking' },
+            bio: { label: 'Short Bio', placeholder: 'Tell us a little about yourself and your experience.' },
+            button: {
+                default: 'Apply to be a Mentor',
+                loading: 'Submitting Application...'
+            }
+        },
+        submitted: {
+            title: 'Thank You!',
+            description: 'Your application has been received. We will review it and get in touch with you shortly.'
+        },
+        toast: {
+            title: 'Application Submitted!',
+            description: 'Thank you for your interest in becoming a mentor.'
+        }
+    },
+    errors: {
+        "Name must be at least 2 characters.": "Name must be at least 2 characters.",
+        "Please enter a valid email.": "Please enter a valid email.",
+        "Please list your areas of expertise (at least 10 characters).": "Please list your areas of expertise (at least 10 characters).",
+        "Bio must be at least 20 characters.": "Bio must be at least 20 characters.",
+        "Name is required": "Name is required",
+        "Please select a date": "Please select a date",
+        "Please tell us a bit more about your goals (at least 10 characters).": "Please tell us a bit more about your goals (at least 10 characters).",
+    },
+    mentorCard: {
+        about: 'About {{name}}',
+        reason: 'Why we matched you',
+        listen: 'Listen to Intro',
+        generating: 'Generating...',
+        connect: 'Connect',
+        bookCall: 'Book a Voice Call'
+    },
+    mentorConnect: {
+        greeting: 'Shabash! Aapka mentor ab aapke sath hai.',
+        tabs: {
+            voiceMessage: {
+                title: 'Send Voice Message',
+                description: 'Record a message for your mentor. Ask a question or share an update.',
+                placeholder: 'Your recorded message will appear here...',
+                button: 'Send Message'
+            },
+            bookCall: {
+                title: 'Book Weekly Call',
+                description: 'Schedule a one-on-one call with {{name}}.',
+                form: {
+                    name: { label: 'Your Name' },
+                    date: { label: 'Preferred Date' },
+                    notes: { label: 'Notes (Optional)', placeholder: 'Anything specific you want to discuss?' },
+                    button: 'Book Call'
+                }
+            },
+            lessons: {
+                title: 'Audio Lessons',
+                description: 'Listen to lessons from {{name}}.',
+                lesson1: { title: 'Lesson 1: Introduction to {{expertise}}' },
+                lesson2: { title: 'Lesson 2: Core Concepts' },
+                offline: {
+                    title: 'Offline Access',
+                    description: 'Download lessons to listen anywhere, even without an internet connection.'
+                }
+            }
+        },
+        messageSent: {
+            title: 'Message Sent!',
+            description: 'Your voice message has been sent to your mentor.',
+            alertDescription: 'Your mentor will receive your message and respond soon.'
+        },
+        callBooked: {
+            title: 'Call Booked!',
+            description: 'Your call with {{name}} has been scheduled.',
+            alertTitle: 'Call Scheduled!',
+            alertDescription: 'Your weekly call has been booked. You will receive a confirmation email shortly.'
+        }
+    }
+  },
 };
 
 interface LanguageContextType {
@@ -393,3 +661,5 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useLanguage = () => useContext(LanguageContext);
+
+    

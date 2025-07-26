@@ -43,8 +43,8 @@ export function SiteHeader() {
                 <DropdownMenuContent>
                   <DropdownMenuItem onSelect={() => setLanguage('en')}>English</DropdownMenuItem>
                   <DropdownMenuItem onSelect={() => setLanguage('hi')}>हिन्दी</DropdownMenuItem>
-                  <DropdownMenuItem disabled>తెలుగు</DropdownMenuItem>
-                  <DropdownMenuItem disabled>தமிழ்</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setLanguage('te')}>తెలుగు</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setLanguage('ta')}>தமிழ்</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </nav>
@@ -85,3 +85,5 @@ export function SiteHeader() {
     </header>
   );
 }
+
+    
