@@ -40,7 +40,7 @@ export function SiteHeader() {
              <div className="hidden md:flex items-center gap-4">
                  <Link href="/whisper-ask">
                     <Button variant="ghost">
-                        <Quote className="mr-2 h-4 w-4" />
+                        <Quote className="h-4 w-4" />
                         WhisperAsk
                     </Button>
                  </Link>
