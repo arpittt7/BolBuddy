@@ -35,7 +35,7 @@ export default function ContactPage() {
             {team.map((member) => (
               <div key={member.email} className="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-lg border hover:shadow-lg transition-shadow">
                 <Avatar className="h-24 w-24">
-                  <AvatarImage src={`https://i.pravatar.cc/150?u=${member.email}`} alt={member.name} />
+                  <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${member.email}`} alt={member.name} />
                   <AvatarFallback className="text-3xl">{member.initials}</AvatarFallback>
                 </Avatar>
                 <div className="flex-grow text-center sm:text-left">

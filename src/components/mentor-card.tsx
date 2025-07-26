@@ -56,7 +56,7 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
     <Card className="w-full h-full flex flex-col transform transition-all duration-300 ease-in-out hover:shadow-2xl shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar className="h-16 w-16">
-          <AvatarImage src={`https://i.pravatar.cc/150?u=${mentor.mentorId}`} alt={mentor.name} />
+          <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${mentor.mentorId}`} alt={mentor.name} />
           <AvatarFallback>
             <User className="h-8 w-8 text-muted-foreground" />
           </AvatarFallback>
