@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, PlayCircle, User, Mail } from "lucide-react";
+import { Loader2, PlayCircle, User, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 type Mentor = MatchMentorOutput['mentors'][number]['mentor'];
@@ -94,6 +94,12 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
             <Button className="w-full">
                 <Mail className="mr-2 h-5 w-5" />
                 Get In Contact
+            </Button>
+        </Link>
+        <Link href="/contact" className="w-full">
+            <Button className="w-full" variant="secondary">
+                <Phone className="mr-2 h-5 w-5" />
+                Book a Voice Call
             </Button>
         </Link>
       </CardFooter>
