@@ -4,9 +4,10 @@ import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Users, Download, Award, HelpCircle, Video } from 'lucide-react';
+import { Users, Download, Award, HelpCircle, Video, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -14,7 +15,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
-      <main className="flex-grow flex flex-col items-center justify-center p-4">
+      <main className="flex-grow flex flex-col items-center justify-center p-4 space-y-12">
         <Card className="w-full container mx-auto text-center bg-transparent border-2 border-amber-200/80 shadow-amber-200/20 shadow-2xl py-8 md:py-12">
             <h1 className="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-foreground">
                 {t('home.hero.title')}
@@ -23,10 +24,10 @@ export default function Home() {
                 {t('home.hero.subtitle')}
             </p>
         </Card>
-        <div className="mt-12 w-full flex justify-center">
+        <div className="w-full flex justify-center">
             <BolBuddy />
         </div>
-        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="w-full container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
              <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
@@ -108,7 +109,7 @@ export default function Home() {
                 </CardFooter>
             </Card>
         </div>
-        <div className="mt-8 w-full container mx-auto">
+        <div className="w-full container mx-auto">
             <Card className="w-full shadow-xl flex flex-col md:flex-row items-center">
                 <CardHeader className="text-center md:text-left">
                     <div className="mx-auto md:mx-0 bg-primary/10 text-primary p-3 rounded-full w-fit">
@@ -131,6 +132,30 @@ export default function Home() {
                 </CardFooter>
             </Card>
         </div>
+         <div className="w-full container mx-auto">
+                <Card className="w-full shadow-xl">
+                    <CardHeader className="flex flex-row items-center gap-4 p-6">
+                        <div className="bg-primary/10 text-primary p-3 rounded-full w-fit">
+                            <Briefcase className="h-8 w-8" />
+                        </div>
+                        <div className="flex-1">
+                            <CardTitle className="text-3xl font-headline">Scholarship / Internship Alerts</CardTitle>
+                            <CardDescription className="text-lg mt-1">
+                                Stay updated on the latest opportunities.
+                            </CardDescription>
+                        </div>
+                    </CardHeader>
+                    <CardContent className="p-6 pt-0">
+                       <Alert>
+                            <Award className="h-4 w-4"/>
+                            <AlertTitle>No Active Alerts</AlertTitle>
+                            <AlertDescription>
+                                There are no active scholarships or internships at this time. Please check back later!
+                            </AlertDescription>
+                       </Alert>
+                    </CardContent>
+                </Card>
+            </div>
       </main>
     </div>
   );
