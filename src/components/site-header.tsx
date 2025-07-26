@@ -1,14 +1,23 @@
+
 'use client';
-import { Mic, Menu } from 'lucide-react';
+import { Mic, Menu, LogOut } from 'lucide-react';
 import { Button } from './ui/button';
 import Link from 'next/link';
+import { useAuth } from '@/hooks/use-auth';
+import { auth } from '@/lib/firebase';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 export function SiteHeader() {
+  const { user } = useAuth();
   const navLinks = [
     { name: 'Features', href: '#' },
     { name: 'About', href: '#' },
     { name: 'Contact', href: '/contact' }
   ];
+
+  const handleSignOut = async () => {
+    await auth.signOut();
+  }
 
   return (
     <header className="w-full">
@@ -29,11 +38,24 @@ export function SiteHeader() {
           </div>
           <div className="flex items-center gap-4">
              <div className="hidden md:flex items-center gap-4">
-                <Link href="/auth">
-                  <Button>
-                      Sign In
-                  </Button>
-                </Link>
+                {user ? (
+                    <>
+                        <Avatar className="h-9 w-9">
+                            <AvatarImage src={user.photoURL ?? undefined} alt={user.displayName ?? ""} data-ai-hint="profile picture" />
+                            <AvatarFallback>{user.email?.[0].toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                        <Button variant="ghost" onClick={handleSignOut}>
+                            <LogOut className="mr-2 h-4 w-4" />
+                            Sign Out
+                        </Button>
+                    </>
+                ) : (
+                    <Link href="/auth">
+                      <Button>
+                          Sign In
+                      </Button>
+                    </Link>
+                )}
              </div>
             <Button variant="ghost" size="icon" className="md:hidden text-foreground/80 hover:text-foreground">
               <Menu className="h-6 w-6" />

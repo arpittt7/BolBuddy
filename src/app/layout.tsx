@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import { AuthProvider } from '@/hooks/use-auth';
 
 export const metadata: Metadata = {
   title: 'AutoTune',
@@ -19,16 +20,18 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
       <body className="antialiased">
-        <div className="wavy-background">
-          <div className="wave wave1"></div>
-          <div className="wave wave2"></div>
-          <div className="wave wave3"></div>
-          <div className="wave wave4"></div>
-        </div>
-        <div className="relative z-10">
-            {children}
-        </div>
-        <Toaster />
+        <AuthProvider>
+            <div className="wavy-background">
+              <div className="wave wave1"></div>
+              <div className="wave wave2"></div>
+              <div className="wave wave3"></div>
+              <div className="wave wave4"></div>
+            </div>
+            <div className="relative z-10">
+                {children}
+            </div>
+            <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
