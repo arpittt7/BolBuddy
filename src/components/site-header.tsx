@@ -18,11 +18,6 @@ export function SiteHeader() {
   const { user } = useAuth();
   const { t, setLanguage, language } = useLanguage();
 
-  const navLinks = [
-    { name: t('nav.about'), href: '/about' },
-    { name: t('nav.contact'), href: '/contact' }
-  ];
-
   const handleSignOut = async () => {
     await auth.signOut();
   }
@@ -52,11 +47,6 @@ export function SiteHeader() {
                   <DropdownMenuItem disabled>தமிழ்</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              {navLinks.map((link) => (
-                <Link key={link.name} href={link.href} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-                  {link.name}
-                </Link>
-              ))}
             </nav>
           </div>
           <div className="flex items-center gap-2">
