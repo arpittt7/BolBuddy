@@ -162,7 +162,7 @@ export default function Home() {
                 </Card>
             </div>
         <div className="w-full container mx-auto">
-             <Card className="w-full shadow-xl text-center p-8 md:p-12">
+             <Card className="w-full shadow-xl text-center p-8 md:p-12 bg-muted/50">
                 <CardTitle className="text-4xl font-headline">{t('home.about.title')}</CardTitle>
                 <CardDescription className="max-w-3xl mx-auto text-lg mt-4 text-foreground/80">
                     {t('home.about.description')}
