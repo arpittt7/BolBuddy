@@ -9,13 +9,15 @@ const team = [
     name: 'Arpit Shekhawat',
     email: 'shekhawatarpit98@gmail.com',
     initials: 'AS',
-    role: 'Founder & Tech Lead'
+    role: 'Founder & Tech Lead',
+    avatarOptions: 'top=shortHair&mouth=smile'
   },
   {
     name: 'Priya Wandhekar',
     email: 'wandhekarpriya.2020@gmail.com',
     initials: 'PW',
-    role: 'Co-founder & AI Specialist'
+    role: 'Co-founder & AI Specialist',
+    avatarOptions: 'top=longHair&mouth=smile'
   },
 ];
 
@@ -35,7 +37,7 @@ export default function ContactPage() {
             {team.map((member) => (
               <div key={member.email} className="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-lg border hover:shadow-lg transition-shadow">
                 <Avatar className="h-24 w-24">
-                  <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${member.email}`} alt={member.name} />
+                  <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${member.email}&${member.avatarOptions}`} alt={member.name} />
                   <AvatarFallback className="text-3xl">{member.initials}</AvatarFallback>
                 </Avatar>
                 <div className="flex-grow text-center sm:text-left">

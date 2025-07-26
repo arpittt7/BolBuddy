@@ -17,6 +17,8 @@ interface MentorCardProps {
   language?: string;
 }
 
+const femaleNames = ["Priya", "Anjali", "Sonia", "Neha", "Isha", "Meera", "Pooja", "Divya", "Sunita", "Deepa", "Reena", "Geeta", "Shreya", "Tanvi", "Zara", "Kavita", "Natasha", "Aisha", "Ishita", "Tanya", "Anushka"];
+
 export function MentorCard({ mentor, reason, language }: MentorCardProps) {
   const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
@@ -50,13 +52,15 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
       setIsGeneratingAudio(false);
     }
   };
-
+  
+  const isFemale = femaleNames.some(name => mentor.name.includes(name));
+  const avatarOptions = `mouth=smile&top=${isFemale ? 'longHair' : 'shortHair'}`;
 
   return (
     <Card className="w-full h-full flex flex-col transform transition-all duration-300 ease-in-out hover:shadow-2xl shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar className="h-16 w-16">
-          <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${mentor.mentorId}`} alt={mentor.name} />
+          <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${mentor.mentorId}&${avatarOptions}`} alt={mentor.name} />
           <AvatarFallback>
             <User className="h-8 w-8 text-muted-foreground" />
           </AvatarFallback>

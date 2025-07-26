@@ -39,6 +39,8 @@ const BookingSchema = z.object({
 })
 type BookingFormValues = z.infer<typeof BookingSchema>;
 
+const femaleNames = ["Priya", "Anjali", "Sonia", "Neha", "Isha", "Meera", "Pooja", "Divya", "Sunita", "Deepa", "Reena", "Geeta", "Shreya", "Tanvi", "Zara", "Kavita", "Natasha", "Aisha", "Ishita", "Tanya", "Anushka"];
+
 export function MentorConnect({ mentor }: { mentor: Mentor }) {
   const [isRecording, setIsRecording] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -130,6 +132,9 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
   }
 
   const defaultTab = searchParams.get('action') === 'book-call' ? 'book-call' : 'send-message';
+  
+  const isFemale = femaleNames.some(name => mentor.name.includes(name));
+  const avatarOptions = `mouth=smile&top=${isFemale ? 'longHair' : 'shortHair'}`;
 
   return (
     <Card className="w-full max-w-4xl shadow-2xl">
@@ -139,7 +144,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
           <AlertTitle className="font-headline">Shabash! Aapka mentor ab aapke sath hai.</AlertTitle>
         </Alert>
         <Avatar className="h-24 w-24 mx-auto mt-6">
-          <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${mentor.mentorId}`} alt={mentor.name} />
+          <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${mentor.mentorId}&${avatarOptions}`} alt={mentor.name} />
           <AvatarFallback className="text-3xl">
             <User />
           </AvatarFallback>
