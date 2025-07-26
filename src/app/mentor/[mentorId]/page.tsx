@@ -15,7 +15,7 @@ interface Mentor {
   bio: string;
 }
 
-export default function MentorPage({ params }: { params: { mentorId: string } }) {
+export default function MentorPage({ params: { mentorId } }: { params: { mentorId: string } }) {
     const [mentor, setMentor] = useState<Mentor | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -24,7 +24,7 @@ export default function MentorPage({ params }: { params: { mentorId: string } })
         const fetchMentor = async () => {
             try {
                 const allMentors = await getAllMentors({});
-                const foundMentor = allMentors.find(m => m.mentorId === params.mentorId);
+                const foundMentor = allMentors.find(m => m.mentorId === mentorId);
                 if (foundMentor) {
                     setMentor(foundMentor);
                 } else {
@@ -39,7 +39,7 @@ export default function MentorPage({ params }: { params: { mentorId: string } })
         };
 
         fetchMentor();
-    }, [params.mentorId]);
+    }, [mentorId]);
 
     if (loading) {
         return (
