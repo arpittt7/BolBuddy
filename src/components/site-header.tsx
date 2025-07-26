@@ -1,6 +1,6 @@
 
 'use client';
-import { Mic, Menu, LogOut, UserPlus } from 'lucide-react';
+import { Mic, Menu, LogOut, UserPlus, HelpCircle, Quote } from 'lucide-react';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
@@ -11,7 +11,7 @@ export function SiteHeader() {
   const { user } = useAuth();
   const navLinks = [
     { name: 'Features', href: '#' },
-    { name: 'About', href: '#' },
+    { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
 
@@ -40,7 +40,7 @@ export function SiteHeader() {
              <div className="hidden md:flex items-center gap-2">
                  <Link href="/join-mentor">
                     <Button variant="ghost">
-                        <UserPlus className="h-4 w-4 mr-1" />
+                        <UserPlus className="h-4 w-4 mr-2" />
                         Join as a Mentor
                     </Button>
                  </Link>
