@@ -4,7 +4,7 @@ import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { BolBuddy } from '@/components/voice-mentor';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Users, Download, Award, HelpCircle, Video } from 'lucide-react';
+import { Users, Download, Award, HelpCircle, Video, Info } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -161,6 +161,23 @@ export default function Home() {
                     </CardContent>
                 </Card>
             </div>
+        <div className="w-full container mx-auto">
+            <Card className="w-full shadow-xl">
+                <CardHeader className="flex flex-row items-center gap-4 p-6">
+                    <div className="bg-primary/10 text-primary p-3 rounded-full w-fit">
+                        <Info className="h-8 w-8" />
+                    </div>
+                    <div>
+                        <CardTitle className="text-3xl font-headline">{t('home.about.title')}</CardTitle>
+                    </div>
+                </CardHeader>
+                <CardContent className="p-6 pt-0">
+                    <p className="text-lg text-foreground/80">
+                        {t('home.about.description')}
+                    </p>
+                </CardContent>
+            </Card>
+        </div>
       </main>
     </div>
   );
