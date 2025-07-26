@@ -11,41 +11,41 @@ const courses = [
         title: 'Guvi (by IIT Madras)',
         description: 'Free courses in vernacular languages (Tamil, Hindi, Telugu). Teaches coding, AI/ML, Python, Web Dev.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'online learning',
+        dataAiHint: 'IIT Madras',
         href: 'https://www.guvi.in/'
     },
     {
         title: 'Mentor India (by NITI Aayog)',
         description: 'Government initiative to connect industry experts with young students. Especially targets underserved areas.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'mentorship community',
+        dataAiHint: 'government building',
         href: 'https://aim.gov.in/mentor-india.php'
     },
     {
         title: 'Unschool & Internshala',
         description: 'Some free basic mentorship via webinars and trial courses. Good for career skills, resumes, etc.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'career skills'
+        dataAiHint: 'online course'
     },
     {
         title: 'FreeCodeCamp',
         description: 'Structured learning paths with community support. Many learners become mentors in forums.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'coding community',
+        dataAiHint: 'people coding',
         href: 'https://www.freecodecamp.org/'
     },
     {
         title: 'Code.org',
         description: 'Ideal for beginners, especially school kids learning programming basics. Available in multiple languages.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'learning programming',
+        dataAiHint: 'children coding',
         href: 'https://code.org/'
     },
     {
         title: 'Think-Digital (by NavGurukul)',
         description: 'Teaches underprivileged youth coding + helps them get jobs. Sometimes offers offline residential programs too.',
         image: 'https://placehold.co/600x400.png',
-        dataAiHint: 'underprivileged education',
+        dataAiHint: 'students learning',
         href: 'https://www.thinknavgurukul.org/'
     }
 ]
