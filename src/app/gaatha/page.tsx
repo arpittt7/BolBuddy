@@ -56,7 +56,7 @@ export default function GaathaPage() {
       <SiteHeader />
       <main className="flex-grow flex flex-col items-center p-4">
         <div className="w-full container mx-auto">
-            <Card className="w-full text-center bg-transparent border-2 border-amber-400/60 shadow-amber-400/20 shadow-2xl py-8 md:py-12">
+            <Card className="w-full text-center bg-transparent border-0 shadow-none py-8 md:py-12">
                 <h1 className="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-foreground">
                     Audio Badges + Gaatha
                 </h1>
