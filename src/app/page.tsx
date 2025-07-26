@@ -23,7 +23,7 @@ export default function Home() {
         <div className="mt-12 w-full flex justify-center">
             <BolBuddy />
         </div>
-        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-12 w-full container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
              <Card className="w-full shadow-xl flex flex-col">
                 <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
@@ -42,27 +42,6 @@ export default function Home() {
                  <CardFooter className="justify-center">
                     <Link href="/gupshup">
                         <Button>Join a Group</Button>
-                    </Link>
-                </CardFooter>
-            </Card>
-            <Card className="w-full shadow-xl flex flex-col">
-                <CardHeader className="text-center">
-                    <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit">
-                        <MessageSquareQuote className="h-8 w-8" />
-                    </div>
-                    <CardTitle className="text-3xl font-headline mt-4">WhisperAsk</CardTitle>
-                    <CardDescription className="text-lg">
-                        Ask anonymous questions via voice
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="text-center flex-grow">
-                     <p className="text-muted-foreground">
-                        Have a question you're hesitant to ask? Use your voice to ask it anonymously and get the answers you need without revealing your identity.
-                    </p>
-                </CardContent>
-                <CardFooter className="justify-center">
-                    <Link href="/whisper-ask">
-                        <Button>Ask Anonymously</Button>
                     </Link>
                 </CardFooter>
             </Card>
