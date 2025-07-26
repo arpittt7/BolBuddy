@@ -17,6 +17,7 @@ import { Loader2, User, Mic, MicOff, Send, Calendar, Headphones, Download, PlayC
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { announcementTts } from '@/ai/flows/announcement-tts';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useLanguage } from '@/hooks/use-language';
 
 declare global {
   interface Window {
@@ -52,6 +53,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
   const searchParams = useSearchParams();
+  const { t, language, tError } = useLanguage();
 
   const bookingForm = useForm<BookingFormValues>({
     resolver: zodResolver(BookingSchema),
@@ -61,7 +63,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
   useEffect(() => {
     const playIntro = async () => {
       try {
-        const ttsResponse = await announcementTts({ text: "Shabash! Aapka mentor ab aapke sath hai.", language: 'hi-IN' });
+        const ttsResponse = await announcementTts({ text: t('mentorConnect.greeting'), language: 'hi-IN' });
         const audio = new Audio(ttsResponse.audioDataUri);
         audioRef.current = audio;
         audio.play();
@@ -70,7 +72,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
       }
     };
     playIntro();
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -79,7 +81,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
         const recognition = new SpeechRecognition();
         recognition.continuous = false;
         recognition.interimResults = false;
-        recognition.lang = 'hi-IN';
+        recognition.lang = language === 'en' ? 'en-US' : 'hi-IN';
 
         recognition.onresult = (event: any) => {
           setVoiceMessage(event.results[0][0].transcript);
@@ -93,7 +95,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
         recognitionRef.current = recognition;
       }
     }
-  }, [toast]);
+  }, [toast, language]);
 
   const handleToggleRecording = () => {
     if (!recognitionRef.current) {
@@ -118,7 +120,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
     setIsSending(false);
     setMessageSent(true);
     setVoiceMessage('');
-    toast({ title: "Message Sent!", description: "Your voice message has been sent to your mentor." });
+    toast({ title: t('mentorConnect.messageSent.title'), description: t('mentorConnect.messageSent.description') });
   }
 
   const onBookCallSubmit: SubmitHandler<BookingFormValues> = async (data) => {
@@ -128,7 +130,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
     setIsBooking(false);
     setCallBooked(true);
     bookingForm.reset();
-    toast({ title: "Call Booked!", description: `Your call with ${mentor.name} has been scheduled.` });
+    toast({ title: t('mentorConnect.callBooked.title'), description: t('mentorConnect.callBooked.description', { name: mentor.name }) });
   }
 
   const defaultTab = searchParams.get('action') === 'book-call' ? 'book-call' : 'send-message';
@@ -141,7 +143,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
       <CardHeader className="text-center">
         <Alert variant="default" className="bg-green-100/50 border-green-400 text-green-800">
           <PlayCircle className="h-4 w-4" />
-          <AlertTitle className="font-headline">Shabash! Aapka mentor ab aapke sath hai.</AlertTitle>
+          <AlertTitle className="font-headline">{t('mentorConnect.greeting')}</AlertTitle>
         </Alert>
         <Avatar className="h-24 w-24 mx-auto mt-6">
           <AvatarImage src={`https://api.dicebear.com/8.x/avataaars/svg?seed=${mentor.mentorId}&${avatarOptions}`} alt={mentor.name} />
@@ -155,28 +157,28 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
       <CardContent>
         <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="send-message"><Send className="mr-2 h-4 w-4"/>Send Voice Message</TabsTrigger>
-            <TabsTrigger value="book-call"><Calendar className="mr-2 h-4 w-4"/>Book Weekly Call</TabsTrigger>
-            <TabsTrigger value="lessons"><Headphones className="mr-2 h-4 w-4"/>Audio Lessons</TabsTrigger>
+            <TabsTrigger value="send-message"><Send className="mr-2 h-4 w-4"/>{t('mentorConnect.tabs.voiceMessage.title')}</TabsTrigger>
+            <TabsTrigger value="book-call"><Calendar className="mr-2 h-4 w-4"/>{t('mentorConnect.tabs.bookCall.title')}</TabsTrigger>
+            <TabsTrigger value="lessons"><Headphones className="mr-2 h-4 w-4"/>{t('mentorConnect.tabs.lessons.title')}</TabsTrigger>
           </TabsList>
           
           <TabsContent value="send-message" className="mt-6">
              <Card>
                 <CardHeader>
-                    <CardTitle>Send a Voice Message</CardTitle>
-                    <CardDescription>Record a message for your mentor. Ask a question or share an update.</CardDescription>
+                    <CardTitle>{t('mentorConnect.tabs.voiceMessage.title')}</CardTitle>
+                    <CardDescription>{t('mentorConnect.tabs.voiceMessage.description')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     {messageSent ? (
                         <Alert>
-                            <AlertTitle>Message Sent!</AlertTitle>
-                            <AlertDescription>Your mentor will receive your message and respond soon.</AlertDescription>
+                            <AlertTitle>{t('mentorConnect.messageSent.title')}</AlertTitle>
+                            <AlertDescription>{t('mentorConnect.messageSent.alertDescription')}</AlertDescription>
                         </Alert>
                     ) : (
                         <div className="space-y-4">
                              <div className="relative">
                                 <Textarea 
-                                    placeholder="Your recorded message will appear here..."
+                                    placeholder={t('mentorConnect.tabs.voiceMessage.placeholder')}
                                     value={voiceMessage}
                                     readOnly
                                     className="min-h-[100px]"
@@ -193,7 +195,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
                             </div>
                             <Button className="w-full" onClick={handleSendVoiceMessage} disabled={!voiceMessage || isSending}>
                                 {isSending ? <Loader2 className="animate-spin mr-2"/> : <Send className="mr-2"/>}
-                                Send Message
+                                {t('mentorConnect.tabs.voiceMessage.button')}
                             </Button>
                         </div>
                     )}
@@ -204,34 +206,34 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
           <TabsContent value="book-call" className="mt-6">
             <Card>
                 <CardHeader>
-                    <CardTitle>Book a Weekly Voice Call</CardTitle>
-                    <CardDescription>Schedule a one-on-one call with {mentor.name}.</CardDescription>
+                    <CardTitle>{t('mentorConnect.tabs.bookCall.title')}</CardTitle>
+                    <CardDescription>{t('mentorConnect.tabs.bookCall.description', { name: mentor.name })}</CardDescription>
                 </CardHeader>
                 <CardContent>
                 {callBooked ? (
                      <Alert>
-                        <AlertTitle>Call Scheduled!</AlertTitle>
-                        <AlertDescription>Your weekly call has been booked. You will receive a confirmation email shortly.</AlertDescription>
+                        <AlertTitle>{t('mentorConnect.callBooked.alertTitle')}</AlertTitle>
+                        <AlertDescription>{t('mentorConnect.callBooked.alertDescription')}</AlertDescription>
                     </Alert>
                 ) : (
                     <form onSubmit={bookingForm.handleSubmit(onBookCallSubmit)} className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="name">Your Name</Label>
+                            <Label htmlFor="name">{t('mentorConnect.tabs.bookCall.form.name.label')}</Label>
                             <Input id="name" {...bookingForm.register("name")} />
-                             {bookingForm.formState.errors.name && <p className="text-sm text-destructive">{bookingForm.formState.errors.name.message}</p>}
+                             {bookingForm.formState.errors.name && <p className="text-sm text-destructive">{tError(bookingForm.formState.errors.name.message)}</p>}
                         </div>
                          <div className="space-y-2">
-                            <Label htmlFor="date">Preferred Date</Label>
+                            <Label htmlFor="date">{t('mentorConnect.tabs.bookCall.form.date.label')}</Label>
                             <Input id="date" type="date" {...bookingForm.register("date")} />
-                            {bookingForm.formState.errors.date && <p className="text-sm text-destructive">{bookingForm.formState.errors.date.message}</p>}
+                            {bookingForm.formState.errors.date && <p className="text-sm text-destructive">{tError(bookingForm.formState.errors.date.message)}</p>}
                         </div>
                          <div className="space-y-2">
-                            <Label htmlFor="notes">Notes (Optional)</Label>
-                            <Textarea id="notes" placeholder="Anything specific you want to discuss?" {...bookingForm.register("notes")} />
+                            <Label htmlFor="notes">{t('mentorConnect.tabs.bookCall.form.notes.label')}</Label>
+                            <Textarea id="notes" placeholder={t('mentorConnect.tabs.bookCall.form.notes.placeholder')} {...bookingForm.register("notes")} />
                         </div>
                         <Button type="submit" className="w-full" disabled={isBooking}>
                             {isBooking ? <Loader2 className="animate-spin mr-2"/> : <Calendar className="mr-2"/>}
-                            Book Call
+                            {t('mentorConnect.tabs.bookCall.form.button')}
                         </Button>
                     </form>
                 )}
@@ -242,13 +244,13 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
           <TabsContent value="lessons" className="mt-6">
             <Card>
                 <CardHeader>
-                    <CardTitle>Pre-recorded Audio Lessons</CardTitle>
-                    <CardDescription>Listen to lessons from {mentor.name}. Available online and offline.</CardDescription>
+                    <CardTitle>{t('mentorConnect.tabs.lessons.title')}</CardTitle>
+                    <CardDescription>{t('mentorConnect.tabs.lessons.description', { name: mentor.name })}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="flex items-center justify-between p-3 border rounded-lg">
                         <div>
-                            <p className="font-semibold">Lesson 1: Introduction to {mentor.expertise.split(',')[0]}</p>
+                            <p className="font-semibold">{t('mentorConnect.tabs.lessons.lesson1.title', { expertise: mentor.expertise.split(',')[0] })}</p>
                             <p className="text-sm text-muted-foreground">5:30 min</p>
                         </div>
                         <div className="flex items-center gap-2">
@@ -258,7 +260,7 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
                     </div>
                      <div className="flex items-center justify-between p-3 border rounded-lg">
                         <div>
-                            <p className="font-semibold">Lesson 2: Core Concepts</p>
+                            <p className="font-semibold">{t('mentorConnect.tabs.lessons.lesson2.title')}</p>
                             <p className="text-sm text-muted-foreground">12:15 min</p>
                         </div>
                          <div className="flex items-center gap-2">
@@ -268,9 +270,9 @@ export function MentorConnect({ mentor }: { mentor: Mentor }) {
                     </div>
                     <Alert>
                         <Download className="h-4 w-4" />
-                        <AlertTitle>Offline Access</AlertTitle>
+                        <AlertTitle>{t('mentorConnect.tabs.lessons.offline.title')}</AlertTitle>
                         <AlertDescription>
-                            Download lessons to listen anywhere, even without an internet connection.
+                            {t('mentorConnect.tabs.lessons.offline.description')}
                         </AlertDescription>
                     </Alert>
                 </CardContent>

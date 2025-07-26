@@ -12,12 +12,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useLanguage } from '@/hooks/use-language';
 
 export function SiteHeader() {
   const { user } = useAuth();
+  const { t, setLanguage, language } = useLanguage();
+
   const navLinks = [
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' }
+    { name: t('nav.about'), href: '/about' },
+    { name: t('nav.contact'), href: '/contact' }
   ];
 
   const handleSignOut = async () => {
@@ -38,15 +41,15 @@ export function SiteHeader() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
                     <Globe className="h-4 w-4 mr-2" />
-                    Language
+                    {t('nav.language')}
                     <ChevronDown className="h-4 w-4 ml-1" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuItem>English</DropdownMenuItem>
-                  <DropdownMenuItem>हिन्दी</DropdownMenuItem>
-                  <DropdownMenuItem>తెలుగు</DropdownMenuItem>
-                  <DropdownMenuItem>தமிழ்</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setLanguage('en')}>English</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setLanguage('hi')}>हिन्दी</DropdownMenuItem>
+                  <DropdownMenuItem disabled>తెలుగు</DropdownMenuItem>
+                  <DropdownMenuItem disabled>தமிழ்</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
               {navLinks.map((link) => (
@@ -61,7 +64,7 @@ export function SiteHeader() {
                  <Link href="/join-mentor">
                     <Button variant="ghost">
                         <UserPlus className="h-4 w-4 mr-2" />
-                        Join as a Mentor
+                        {t('nav.joinAsMentor')}
                     </Button>
                  </Link>
                 {user ? (
@@ -72,13 +75,13 @@ export function SiteHeader() {
                         </Avatar>
                         <Button variant="ghost" onClick={handleSignOut}>
                             <LogOut className="mr-2 h-4 w-4" />
-                            Sign Out
+                            {t('nav.signOut')}
                         </Button>
                     </>
                 ) : (
                     <Link href="/auth">
                       <Button>
-                          Sign In
+                          {t('nav.signIn')}
                       </Button>
                     </Link>
                 )}

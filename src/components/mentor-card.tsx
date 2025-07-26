@@ -1,3 +1,4 @@
+
 "use client"
 import { useState } from "react";
 import type { MatchMentorOutput } from "@/ai/flows/match-mentor-to-user";
@@ -8,6 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, PlayCircle, User, Mail, Phone } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/hooks/use-language";
 
 type Mentor = MatchMentorOutput['mentors'][number]['mentor'];
 
@@ -23,6 +25,7 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
   const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleListenToBio = async () => {
     if (audioSrc) {
@@ -72,11 +75,11 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
       </CardHeader>
       <CardContent className="space-y-4 flex-grow">
         <div>
-          <h3 className="font-semibold text-lg mb-1 font-headline">About {mentor.name}</h3>
+          <h3 className="font-semibold text-lg mb-1 font-headline">{t('mentorCard.about', { name: mentor.name })}</h3>
           <p className="text-muted-foreground">{mentor.bio}</p>
         </div>
         <div>
-          <h3 className="font-semibold text-lg mb-1 font-headline">Why we matched you</h3>
+          <h3 className="font-semibold text-lg mb-1 font-headline">{t('mentorCard.reason')}</h3>
           <p className="text-muted-foreground">{reason}</p>
         </div>
       </CardContent>
@@ -85,25 +88,25 @@ export function MentorCard({ mentor, reason, language }: MentorCardProps) {
            {isGeneratingAudio ? (
             <>
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-              Generating...
+              {t('mentorCard.generating')}
             </>
           ) : (
             <>
               <PlayCircle className="mr-2 h-5 w-5" />
-              Listen to Intro
+              {t('mentorCard.listen')}
             </>
           )}
         </Button>
         <Link href={`/mentor/${mentor.mentorId}`} className="w-full">
             <Button className="w-full">
                 <Mail className="mr-2 h-5 w-5" />
-                Connect
+                {t('mentorCard.connect')}
             </Button>
         </Link>
         <Link href={`/mentor/${mentor.mentorId}?action=book-call`} className="w-full">
             <Button className="w-full" variant="secondary">
                 <Phone className="mr-2 h-5 w-5" />
-                Book a Voice Call
+                {t('mentorCard.bookCall')}
             </Button>
         </Link>
       </CardFooter>

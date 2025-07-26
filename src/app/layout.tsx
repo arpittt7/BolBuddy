@@ -1,7 +1,9 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { AuthProvider } from '@/hooks/use-auth';
+import { LanguageProvider } from '@/hooks/use-language';
 
 export const metadata: Metadata = {
   title: 'AutoTune',
@@ -21,8 +23,10 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
+          <LanguageProvider>
             {children}
             <Toaster />
+          </LanguageProvider>
         </AuthProvider>
       </body>
     </html>

@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Send } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { useLanguage } from '@/hooks/use-language';
 
 const FormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -28,6 +29,7 @@ export default function JoinMentorPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
+  const { t, tError } = useLanguage();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
@@ -43,15 +45,14 @@ export default function JoinMentorPage() {
     setIsLoading(true);
     console.log("Mentor application submitted:", data);
     
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     setIsLoading(false);
     setSubmitted(true);
     form.reset();
     toast({
-        title: "Application Submitted!",
-        description: "Thank you for your interest in becoming a mentor.",
+        title: t('joinMentor.toast.title'),
+        description: t('joinMentor.toast.description'),
     })
   };
 
@@ -61,51 +62,51 @@ export default function JoinMentorPage() {
       <main className="flex-grow flex flex-col items-center justify-center p-4">
         <Card className="w-full max-w-2xl shadow-xl">
           <CardHeader>
-            <CardTitle className="text-3xl font-headline">Become a Mentor</CardTitle>
+            <CardTitle className="text-3xl font-headline">{t('joinMentor.title')}</CardTitle>
             <CardDescription>
-              Share your knowledge and guide the next generation of talent. Fill out the form below to join us.
+              {t('joinMentor.description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             {submitted ? (
               <Alert variant="default" className="bg-green-100/50 border-green-400 text-green-800">
-                <AlertTitle className="font-headline">Thank You!</AlertTitle>
-                <AlertDescription>Your application has been received. We will review it and get in touch with you shortly.</AlertDescription>
+                <AlertTitle className="font-headline">{t('joinMentor.submitted.title')}</AlertTitle>
+                <AlertDescription>{t('joinMentor.submitted.description')}</AlertDescription>
               </Alert>
             ) : (
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="name">{t('joinMentor.form.name.label')}</Label>
                     <Input id="name" {...form.register("name")} disabled={isLoading} />
-                    {form.formState.errors.name && <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>}
+                    {form.formState.errors.name && <p className="text-sm text-destructive">{tError(form.formState.errors.name.message)}</p>}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email">{t('joinMentor.form.email.label')}</Label>
                     <Input id="email" type="email" {...form.register("email")} disabled={isLoading} />
-                     {form.formState.errors.email && <p className="text-sm text-destructive">{form.formState.errors.email.message}</p>}
+                     {form.formState.errors.email && <p className="text-sm text-destructive">{tError(form.formState.errors.email.message)}</p>}
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="expertise">Expertise / Skills</Label>
-                  <Input id="expertise" placeholder="e.g., Python, UI/UX Design, Public Speaking" {...form.register("expertise")} disabled={isLoading} />
-                   {form.formState.errors.expertise && <p className="text-sm text-destructive">{form.formState.errors.expertise.message}</p>}
+                  <Label htmlFor="expertise">{t('joinMentor.form.expertise.label')}</Label>
+                  <Input id="expertise" placeholder={t('joinMentor.form.expertise.placeholder')} {...form.register("expertise")} disabled={isLoading} />
+                   {form.formState.errors.expertise && <p className="text-sm text-destructive">{tError(form.formState.errors.expertise.message)}</p>}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bio">Short Bio</Label>
-                  <Textarea id="bio" placeholder="Tell us a little about yourself and your experience." className="min-h-[100px]" {...form.register("bio")} disabled={isLoading} />
-                  {form.formState.errors.bio && <p className="text-sm text-destructive">{form.formState.errors.bio.message}</p>}
+                  <Label htmlFor="bio">{t('joinMentor.form.bio.label')}</Label>
+                  <Textarea id="bio" placeholder={t('joinMentor.form.bio.placeholder')} className="min-h-[100px]" {...form.register("bio")} disabled={isLoading} />
+                  {form.formState.errors.bio && <p className="text-sm text-destructive">{tError(form.formState.errors.bio.message)}</p>}
                 </div>
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Submitting Application...
+                      {t('joinMentor.form.button.loading')}
                     </>
                   ) : (
                     <>
                       <Send className="mr-2 h-4 w-4" />
-                      Apply to be a Mentor
+                      {t('joinMentor.form.button.default')}
                     </>
                   )}
                 </Button>

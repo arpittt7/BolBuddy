@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
@@ -15,6 +16,7 @@ import { useToast } from '@/hooks/use-toast';
 import { MentorCard } from './mentor-card';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import { useLanguage } from '@/hooks/use-language';
 
 const FormSchema = z.object({
   userGoals: z.string().min(10, {
@@ -39,6 +41,7 @@ export function BolBuddy() {
   const [error, setError] = useState<string | null>(null);
   const recognitionRef = useRef<any | null>(null);
   const { toast } = useToast();
+  const { t, language, tError } = useLanguage();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
@@ -54,7 +57,7 @@ export function BolBuddy() {
         const recognition = new SpeechRecognition();
         recognition.continuous = false;
         recognition.interimResults = false;
-        recognition.lang = 'en-US';
+        recognition.lang = language === 'en' ? 'en-US' : 'hi-IN';
 
         recognition.onresult = (event: any) => {
           const transcript = event.results[0][0].transcript;
@@ -67,8 +70,8 @@ export function BolBuddy() {
           console.error("Speech recognition error", event.error);
           toast({
             variant: "destructive",
-            title: "Voice Error",
-            description: `Could not recognize speech: ${event.error}`,
+            title: t('voice.error.title'),
+            description: `${t('voice.error.description')}: ${event.error}`,
           });
           setIsRecording(false);
         };
@@ -82,14 +85,14 @@ export function BolBuddy() {
         recognitionRef.current = recognition;
       }
     }
-  }, [form, toast, isRecording]);
+  }, [form, toast, isRecording, language, t]);
 
   const handleToggleRecording = () => {
     if (!recognitionRef.current) {
       toast({
         variant: "destructive",
-        title: "Unsupported Browser",
-        description: "Your browser does not support voice recording.",
+        title: t('voice.unsupported.title'),
+        description: t('voice.unsupported.description'),
       });
       return;
     }
@@ -111,14 +114,14 @@ export function BolBuddy() {
     setError(null);
 
     try {
-      const response = await matchMentor({ userGoals: data.userGoals });
+      const response = await matchMentor({ userGoals: data.userGoals, language: language === 'en' ? 'en-US' : 'hi-IN' });
       setResult(response);
     } catch (e) {
       const errorMessage = e instanceof Error ? e.message : "An unknown error occurred.";
       setError(errorMessage);
       toast({
         variant: "destructive",
-        title: "Failed to find a mentor",
+        title: t('bolbuddy.toast.error.title'),
         description: errorMessage,
       });
     } finally {
@@ -130,9 +133,9 @@ export function BolBuddy() {
     <div className="w-full max-w-2xl space-y-8">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="font-headline text-3xl">What are your goals?</CardTitle>
+          <CardTitle className="font-headline text-3xl">{t('bolbuddy.title')}</CardTitle>
           <CardDescription>
-            Tell us what you want to achieve. You can type or use your voice.
+            {t('bolbuddy.description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -143,11 +146,11 @@ export function BolBuddy() {
                 name="userGoals"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="sr-only">Your Goals</FormLabel>
+                    <FormLabel className="sr-only">{t('bolbuddy.form.label')}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Textarea
-                          placeholder="e.g., 'I want to learn coding to get a job' or 'I want to start my own business...'"
+                          placeholder={t('bolbuddy.form.placeholder')}
                           className="min-h-[120px] resize-none pr-12 text-base"
                           {...field}
                         />
@@ -157,13 +160,13 @@ export function BolBuddy() {
                           variant={isRecording ? "destructive" : "ghost"}
                           onClick={handleToggleRecording}
                           className="absolute right-2 top-1/2 -translate-y-1/2"
-                          aria-label={isRecording ? "Stop recording" : "Start recording"}
+                          aria-label={isRecording ? t('bolbuddy.form.stopRecording') : t('bolbuddy.form.startRecording')}
                         >
                           {isRecording ? <MicOff /> : <Mic />}
                         </Button>
                       </div>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>{form.formState.errors.userGoals && tError(form.formState.errors.userGoals.message)}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -171,12 +174,12 @@ export function BolBuddy() {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Matching...
+                    {t('bolbuddy.form.button.loading')}
                   </>
                 ) : (
                   <>
                     <Send className="mr-2 h-4 w-4" />
-                    Find My Mentor
+                    {t('bolbuddy.form.button.default')}
                   </>
                 )}
               </Button>
@@ -189,7 +192,7 @@ export function BolBuddy() {
          <Card>
             <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[200px]">
                 <Loader2 className="h-12 w-12 animate-spin text-primary"/>
-                <p className="text-muted-foreground">Finding the perfect mentor for you...</p>
+                <p className="text-muted-foreground">{t('bolbuddy.loading')}</p>
             </CardContent>
          </Card>
       )}
@@ -211,7 +214,7 @@ export function BolBuddy() {
                 <CarouselContent>
                     {result.mentors.map(({ mentor, reason }, index) => (
                     <CarouselItem key={index} className="md:basis-1/1 p-4">
-                       <MentorCard mentor={mentor} reason={reason} />
+                       <MentorCard mentor={mentor} reason={reason} language={language === 'en' ? 'en-US' : 'hi-IN'} />
                     </CarouselItem>
                     ))}
                 </CarouselContent>
