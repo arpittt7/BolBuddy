@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Briefcase } from 'lucide-react';
+import { CounsellingChat } from '@/components/counselling-chat';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -25,6 +26,9 @@ export default function Home() {
                 {t('home.hero.subtitle')}
             </p>
         </Card>
+        <div className="w-full container mx-auto">
+            <CounsellingChat />
+        </div>
         <div className="w-full container mx-auto">
             <BolBuddy />
         </div>
@@ -116,7 +120,7 @@ export default function Home() {
         </div>
         <div className="w-full container mx-auto">
             <Card className="w-full shadow-xl flex flex-col md:flex-row items-center">
-                <CardHeader className="text-center md:text-left">
+                <CardHeader className="flex flex-row items-center gap-4 p-6">
                     <div className="mx-auto md:mx-0 bg-primary/10 text-primary p-3 rounded-full w-fit">
                         <Award className="h-8 w-8" />
                     </div>

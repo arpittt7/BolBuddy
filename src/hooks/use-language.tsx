@@ -15,6 +15,14 @@ const translations = {
       signIn: 'Sign In',
       signOut: 'Sign Out',
     },
+    counselling: {
+        title: 'Need Guidance? Talk to a Counselor',
+        description: 'Feeling stuck or unsure about your career? Chat with our AI counselor or ask to be matched with a real mentor.',
+        placeholder: 'Ask about career paths, skills, or stress...',
+        matchMeButton: 'Match Me with a Counselor',
+        startConversation: 'Ask a question to start the conversation.',
+        matchMeButtonPrompt: 'Please match me with a counselor based on our conversation.',
+    },
     home: {
         hero: {
             title: 'Find Your Perfect Mentor',
@@ -239,6 +247,14 @@ const translations = {
       joinAsMentor: 'मेंटर के रूप में जुड़ें',
       signIn: 'साइन इन करें',
       signOut: 'साइन आउट',
+    },
+    counselling: {
+        title: 'मार्गदर्शन चाहिए? एक काउंसलर से बात करें',
+        description: 'अपने करियर के बारे में उलझन में हैं? हमारे एआई काउंसलर से चैट करें या असली मेंटर से जुड़ने के लिए कहें।',
+        placeholder: 'करियर पथ, कौशल, या तनाव के बारे में पूछें...',
+        matchMeButton: 'मुझे एक काउंसलर से मिलाओ',
+        startConversation: 'बातचीत शुरू करने के लिए एक प्रश्न पूछें।',
+        matchMeButtonPrompt: 'कृपया हमारी बातचीत के आधार पर मुझे एक काउंसलर से मिलाएँ।',
     },
     home: {
         hero: {
@@ -465,6 +481,14 @@ const translations = {
       signIn: 'సైన్ ఇన్ చేయండి',
       signOut: 'సైన్ అవుట్ చేయండి',
     },
+    counselling: {
+        title: 'మార్గదర్శకత్వం కావాలా? ఒక కౌన్సెలర్‌తో మాట్లాడండి',
+        description: 'మీ కెరీర్ గురించి గందరగోళంగా ఉన్నారా? మా AI కౌన్సెలర్‌తో చాట్ చేయండి లేదా నిజమైన మార్గదర్శకుడితో సరిపోలమని అడగండి.',
+        placeholder: 'కెరీర్ మార్గాలు, నైపుణ్యాలు లేదా ఒత్తిడి గురించి అడగండి...',
+        matchMeButton: 'నన్ను ఒక కౌన్సెలర్‌తో సరిపోల్చండి',
+        startConversation: 'సంభాషణను ప్రారంభించడానికి ఒక ప్రశ్న అడగండి.',
+        matchMeButtonPrompt: 'దయచేసి మా సంభాషణ ఆధారంగా నన్ను ఒక కౌన్సెలర్‌తో సరిపోల్చండి.',
+    },
     home: {
       hero: {
         title: 'మీ ఖచ్చితమైన మార్గదర్శకుడిని కనుగొనండి',
@@ -690,6 +714,14 @@ const translations = {
       signIn: 'உள்நுழைக',
       signOut: 'வெளியேறு',
     },
+    counselling: {
+        title: 'வழிகாட்டுதல் தேவையா? ஒரு ஆலோசகரிடம் பேசுங்கள்',
+        description: 'உங்கள் தொழிலைப் பற்றி குழப்பமாக உணர்கிறீர்களா? எங்கள் AI ஆலோசகருடன் அரட்டையடிக்கவும் அல்லது ஒரு உண்மையான வழிகாட்டியுடன் பொருத்தப்படக் கேட்கவும்.',
+        placeholder: 'தொழில் பாதைகள், திறன்கள் அல்லது மன அழுத்தம் பற்றி கேளுங்கள்...',
+        matchMeButton: 'என்னை ஒரு ஆலோசகருடன் பொருத்துங்கள்',
+        startConversation: 'உரையாடலைத் தொடங்க ஒரு கேள்வியைக் கேளுங்கள்.',
+        matchMeButtonPrompt: 'தயவுசெய்து எங்கள் உரையாடலின் அடிப்படையில் என்னை ஒரு ஆலோசகருடன் பொருத்துங்கள்.',
+    },
     home: {
       hero: {
         title: 'உங்கள் சரியான வழிகாட்டியைக் கண்டறியுங்கள்',
@@ -914,6 +946,14 @@ const translations = {
       joinAsMentor: 'मार्गदर्शक म्हणून सामील व्हा',
       signIn: 'साइन इन करा',
       signOut: 'साइन आउट करा',
+    },
+    counselling: {
+        title: 'मार्गदर्शन हवे आहे का? एका समुपदेशकाशी बोला',
+        description: 'तुमच्या करिअरबद्दल गोंधळलेले आहात का? आमच्या AI समुपदेशकाशी चॅट करा किंवा खऱ्या मार्गदर्शकाशी जुळवून घेण्यास सांगा.',
+        placeholder: 'करिअर मार्ग, कौशल्ये, किंवा तणावाबद्दल विचारा...',
+        matchMeButton: 'मला एका समुपदेशकाशी जुळवा',
+        startConversation: 'संभाषण सुरू करण्यासाठी एक प्रश्न विचारा.',
+        matchMeButtonPrompt: 'कृपया आमच्या संभाषणाच्या आधारावर मला एका समुपदेशकाशी जुळवा.',
     },
     home: {
       hero: {
