@@ -5,9 +5,10 @@ import { useState, useRef, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Send, Loader2, User, Bot, Mic, MicOff, Search } from 'lucide-react';
+import { Send, Loader2, User, Bot, Mic, MicOff, Search, RefreshCcw } from 'lucide-react';
 
 import { chatWithBolBot } from '@/ai/flows/bolbot-chat';
+import { matchMentor, type MatchMentorOutput } from '@/ai/flows/match-mentor-to-user';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -16,6 +17,10 @@ import { ScrollArea } from './ui/scroll-area';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { useLanguage } from '@/hooks/use-language';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { MentorCard } from './mentor-card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+
 
 const FormSchema = z.object({
   message: z.string(),
@@ -37,7 +42,10 @@ declare global {
 
 export function CounsellingChat() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isMatching, setIsMatching] = useState(false);
   const [history, setHistory] = useState<ChatMessage[]>([]);
+  const [matchResult, setMatchResult] = useState<MatchMentorOutput | null>(null);
+  const [matchError, setMatchError] = useState<string | null>(null);
   const { toast } = useToast();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any | null>(null);
@@ -88,15 +96,33 @@ export function CounsellingChat() {
     }
   };
 
-  const handleSendMessage = async (message: string) => {
+  const handleSendMessage = async (message: string, matchRequest: boolean = false) => {
       if (message.trim().length === 0) return;
-      setIsLoading(true);
       
       const userMessage: ChatMessage = { role: 'user', content: [{ text: message }] };
       const newHistory = [...history, userMessage];
       setHistory(newHistory);
       form.reset();
 
+      if (matchRequest) {
+        setIsMatching(true);
+        setMatchResult(null);
+        setMatchError(null);
+        try {
+            const conversationText = newHistory.map(h => `${h.role}: ${h.content[0].text}`).join('\n');
+            const response = await matchMentor({ userGoals: conversationText, language: language === 'en' ? 'en-US' : 'hi-IN' });
+            setMatchResult(response);
+        } catch(e) {
+            const errorMessage = e instanceof Error ? e.message : "An unknown error occurred.";
+            setMatchError(errorMessage);
+            toast({ variant: "destructive", title: "Match Error", description: errorMessage });
+        } finally {
+            setIsMatching(false);
+        }
+        return;
+      }
+
+      setIsLoading(true);
       try {
         const response = await chatWithBolBot({ message, history: newHistory });
         const botMessage: ChatMessage = { role: 'model', content: [{ text: response.response }]};
@@ -119,6 +145,72 @@ export function CounsellingChat() {
         scrollAreaRef.current.scrollTo({ top: scrollAreaRef.current.scrollHeight, behavior: 'smooth' })
     }
   }, [history]);
+  
+  const handleReset = () => {
+    setHistory([]);
+    setMatchResult(null);
+    setMatchError(null);
+    form.reset();
+  }
+
+  if (isMatching) {
+    return (
+        <Card className="shadow-lg relative overflow-hidden min-h-[70vh]">
+            <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[70vh]">
+                <Loader2 className="h-12 w-12 animate-spin text-primary"/>
+                <p className="text-muted-foreground">{t('bolbuddy.loading')}</p>
+            </CardContent>
+        </Card>
+    );
+  }
+
+  if (matchResult) {
+    return (
+        <Card className="shadow-lg relative overflow-hidden">
+            <CardHeader>
+                <h2 className="font-headline text-3xl text-center mb-2">{matchResult.announcement}</h2>
+            </CardHeader>
+            <CardContent>
+                <Carousel className="w-full max-w-xl mx-auto" opts={{ align: "start", loop: true }}>
+                    <CarouselContent>
+                        {matchResult.mentors.map(({ mentor, reason }, index) => (
+                        <CarouselItem key={index} className="p-4">
+                           <MentorCard mentor={mentor} reason={reason} language={language === 'en' ? 'en-US' : 'hi-IN'} />
+                        </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
+            </CardContent>
+            <CardFooter className="justify-center">
+                 <Button onClick={handleReset} variant="outline">
+                    <RefreshCcw className="mr-2 h-4 w-4" />
+                    {t('counselling.startOver')}
+                </Button>
+            </CardFooter>
+        </Card>
+    )
+  }
+
+   if (matchError) {
+    return (
+        <Card className="shadow-lg relative overflow-hidden">
+            <CardContent className="p-6">
+                <Alert variant="destructive">
+                  <AlertTitle>Error</AlertTitle>
+                  <AlertDescription>{matchError}</AlertDescription>
+                </Alert>
+                <div className="mt-4 flex justify-center">
+                    <Button onClick={handleReset} variant="outline">
+                        <RefreshCcw className="mr-2 h-4 w-4" />
+                         {t('counselling.startOver')}
+                    </Button>
+                </div>
+            </CardContent>
+        </Card>
+    )
+   }
 
   return (
     <Card className="shadow-lg relative overflow-hidden">
@@ -197,7 +289,7 @@ export function CounsellingChat() {
             </div>
         </CardContent>
         <CardFooter>
-            <Button className="w-full" disabled={isLoading} onClick={() => handleSendMessage(form.getValues('message') || t('counselling.matchMeButtonPrompt'))}>
+            <Button className="w-full" disabled={isLoading} onClick={() => handleSendMessage(form.getValues('message') || t('counselling.matchMeButtonPrompt'), true)}>
                 <Search className="mr-2 h-4 w-4" />
                 {t('counselling.matchMeButton')}
             </Button>
@@ -205,3 +297,5 @@ export function CounsellingChat() {
     </Card>
   );
 }
+
+    

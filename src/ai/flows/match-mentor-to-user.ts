@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -14,7 +15,7 @@ import {z} from 'genkit';
 const MatchMentorInputSchema = z.object({
   userGoals: z
     .string()
-    .describe('The recorded goals of the user, expressed as a text string.'),
+    .describe('The recorded goals or conversation of the user, expressed as a text string.'),
   language: z.string().describe('The language of the user goals (e.g., "en-US", "hi-IN").').optional(),
 });
 export type MatchMentorInput = z.infer<typeof MatchMentorInputSchema>;
@@ -49,9 +50,9 @@ const prompt = ai.definePrompt({
     language: z.string().optional(),
   })},
   output: {schema: MatchMentorOutputSchema},
-  system: `You are an AI mentor matching service called BolBot. Your task is to recommend the 4 best possible mentors from a provided list based on the user's stated goals. You have been provided with a detailed curriculum of skills that students are interested in. Use this curriculum as your knowledge base to understand the user's request at a deeper level.
+  system: `You are an AI mentor matching service called BolBot. Your task is to recommend the 4 best possible mentors from a provided list based on the user's stated goals or conversation. You have been provided with a detailed curriculum of skills that students are interested in. Use this curriculum as your knowledge base to understand the user's request at a deeper level.
 
-Analyze the user's goals and identify the specific topics or sub-topics they are interested in. Then, find mentors whose expertise aligns most closely with those specific topics.
+Analyze the user's goals or conversation and identify the specific topics or sub-topics they are interested in. Then, find mentors whose expertise aligns most closely with those specific topics.
 
 **Curriculum Knowledge Base:**
 
@@ -112,7 +113,7 @@ Analyze the user's goals and identify the specific topics or sub-topics they are
 - **Sustainability:** Green technology skills.
 
 You MUST respond in the same language as the user's goals. The language is specified in the 'language' field.`,
-  prompt: `User Goals: {{{userGoals}}}
+  prompt: `User Goals / Conversation: {{{userGoals}}}
 Language: {{{language}}}
 
 Mentors:
@@ -211,3 +212,5 @@ const matchMentorFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    

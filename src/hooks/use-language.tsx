@@ -22,6 +22,7 @@ const translations = {
         matchMeButton: 'Match Me with a Counselor',
         startConversation: 'Ask a question to start the conversation.',
         matchMeButtonPrompt: 'Please match me with a counselor based on our conversation.',
+        startOver: 'Start Over'
     },
     home: {
         hero: {
@@ -255,6 +256,7 @@ const translations = {
         matchMeButton: 'मुझे एक काउंसलर से मिलाओ',
         startConversation: 'बातचीत शुरू करने के लिए एक प्रश्न पूछें।',
         matchMeButtonPrompt: 'कृपया हमारी बातचीत के आधार पर मुझे एक काउंसलर से मिलाएँ।',
+        startOver: 'फिर से शुरू करें'
     },
     home: {
         hero: {
@@ -488,6 +490,7 @@ const translations = {
         matchMeButton: 'నన్ను ఒక కౌన్సెలర్‌తో సరిపోల్చండి',
         startConversation: 'సంభాషణను ప్రారంభించడానికి ఒక ప్రశ్న అడగండి.',
         matchMeButtonPrompt: 'దయచేసి మా సంభాషణ ఆధారంగా నన్ను ఒక కౌన్సెలర్‌తో సరిపోల్చండి.',
+        startOver: 'మళ్ళీ ప్రారంభించు'
     },
     home: {
       hero: {
@@ -721,6 +724,7 @@ const translations = {
         matchMeButton: 'என்னை ஒரு ஆலோசகருடன் பொருத்துங்கள்',
         startConversation: 'உரையாடலைத் தொடங்க ஒரு கேள்வியைக் கேளுங்கள்.',
         matchMeButtonPrompt: 'தயவுசெய்து எங்கள் உரையாடலின் அடிப்படையில் என்னை ஒரு ஆலோசகருடன் பொருத்துங்கள்.',
+        startOver: 'மீண்டும் தொடங்கு'
     },
     home: {
       hero: {
@@ -954,6 +958,7 @@ const translations = {
         matchMeButton: 'मला एका समुपदेशकाशी जुळवा',
         startConversation: 'संभाषण सुरू करण्यासाठी एक प्रश्न विचारा.',
         matchMeButtonPrompt: 'कृपया आमच्या संभाषणाच्या आधारावर मला एका समुपदेशकाशी जुळवा.',
+        startOver: 'पुन्हा सुरू करा'
     },
     home: {
       hero: {
@@ -1141,7 +1146,7 @@ const translations = {
             },
             session3: {
                 topic: 'यूआय/यूएक्स डिझाइनची तत्त्वे',
-                tags: ['फिग्मा', 'प्रोटोटाइपिंग']
+                tags: ['फिగ్मा', 'प्रोटोटाइपिंग']
             }
         },
         toast: {
@@ -1222,3 +1227,5 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useLanguage = () => useContext(LanguageContext);
+
+    
